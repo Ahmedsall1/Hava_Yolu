@@ -18,9 +18,10 @@
 
 <body class="antialiased">
     <div>
-        <nav><a href="{{url('Anasayfa/index')}}">AnaSayfa</a>
-            <a href="{{url('Anasayfa/about')}}">About</a>
-            <a href="{{url('Anasayfa/about')}}">Giris</a>
+        <nav><a href="{{Route('index')}}">AnaSayfa</a>
+            <a href="{{Route('about')}}">About</a>
+            <a href="{{Route('Giris')}}">Giris</a>
+            <a href="{{Route('Sefer.index')}}">Seferler</a>
         </nav>
     </div>
     @yield('content')
