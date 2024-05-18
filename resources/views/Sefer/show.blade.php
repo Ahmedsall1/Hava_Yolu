@@ -5,7 +5,7 @@
     <ul>
 
 
-    <li>ID:{{$Sefer['id'] }} {{$Sefer['nerden'] }} -> {{$Sefer['nereye']}} Tarih:{{$Sefer['Tarih']}} </li>
+    <li>ID:{{$Sefer['id'] }} {{$Sefer['nerden'] }} -> {{$Sefer['nereye']}} Tarih:{{$Sefer['tarih']}} sure:{{$Sefer['sure']}} KM:{{$Sefer['KM']}}</li>
     <br>
 
     </ul>

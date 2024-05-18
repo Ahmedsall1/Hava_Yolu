@@ -13,13 +13,14 @@
 
 
 
-        <form action="{{route('Sefer.store')}}" method="POST">
+        <form action="{{route('Sefer.update', $Sefer->id)}}" method="POST">
             @csrf
+            @method('PUT')
             <div class="form-group">
                 <label for="sefer-nerden">Nerden : </label>
-                <select class="form-control" id="sefer-nerden" name="sefer-nerden" required>
+                <select class="form-control" id="sefer-nerden" name="sefer-nerden" value="{{$Sefer->nerden}}" required>
                     @foreach($airports as $airport)
-                    <option value="{{ $airport }}">{{ $airport }}</option>
+                    <option value="{{ $airport }}" {{ $Sefer->nerden == $airport ? 'selected' : '' }}>{{ $airport }}</option>
                     @endforeach
                 </select>
             </div>
@@ -28,27 +29,27 @@
             @enderror
             <div class="form-group">
                 <label for="sefer-nereye">Nereye : </label>
-                <select class="form-control" id="sefer-nereye" name="sefer-nereye" required>
+                <select class="form-control" id="sefer-nereye" name="sefer-nereye" value="{{$Sefer->nereye}}" required>
                     @foreach($airports as $airport)
-                    <option value="{{ $airport }}">{{ $airport }}</option>
+                    <option value="{{ $airport }}" {{ $Sefer->nereye == $airport ? 'selected' : '' }}>{{ $airport }}</option>
                     @endforeach
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="sefer-sure">Sure : </label>
-                <input type="time" class="form-control" id="sefer-sure" name="sefer-sure" value="{{old('sefer-sure')}}" required>
+                <input type="time" class="form-control" id="sefer-sure" name="sefer-sure" value="{{$Sefer->sure}}" required>
             </div>
 
             <div class="form-group">
                 <label for="sefer-KM">KM : </label>
-                <input type="number" class="form-control" id="sefer-KM" name="sefer-KM" value="{{old('sefer-KM')}}" required>
+                <input type="number" class="form-control" id="sefer-KM" name="sefer-KM" value="{{$Sefer->KM}}" required>
             </div>
 
 
             <div class="form-group">
                 <label for="sefer-tarih">Tarih : </label>
-                <input type="date" class="form-control" id="sefer-tarih" name="sefer-tarih" value="{{old('sefer-tarih')}}" required>
+                <input type="date" class="form-control" id="sefer-tarih" name="sefer-tarih" value="{{$Sefer->tarih}}" required>
             </div>
 
 
@@ -59,4 +60,4 @@
 </div>
 @endsection
 
-@section('title','Sefer Ekle')
+@section('title','Sefer Düzenle')
