@@ -5,7 +5,7 @@
     <ul>
     @foreach ($Seferler as $x)
     <a href="{{route('Sefer.show',['Sefer'=>$x['id']])}}">
-    <li>ID:{{$x['id'] }} {{$x['nerden'] }} -> {{$x['nereye']}} Tarih:{{$x['Tarih']}} </li></a>
+    <li>ID:{{$x['id'] }} {{$x['nerden'] }} -> {{$x['nereye']}} Tarih:{{$x['tarih']}} sure:{{$x['sure']}} KM:{{$x['KM']}}  </li></a>
 
     <br>
     @endforeach

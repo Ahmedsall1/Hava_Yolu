@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Sefer;
 use Illuminate\Http\Request;
 
 class SeferController extends Controller
@@ -110,27 +111,37 @@ class SeferController extends Controller
     }
     public function index()
     {
-        return view('Sefer.index',['Seferler'=>self::getData()]);
+        return view('Sefer.index',['Seferler'=>Sefer::all()]);
     }
     public function create()
     {
-        //
+        $airports = self::$AirPorts;
+        return view('Sefer.create', compact('airports'));
     }
 
     public function store(Request $request)
     {
-        //
+        $sefer =new Sefer();
+        $sefer->nerden = $request->input('sefer-nerden');
+        $sefer->nereye =$request->input('sefer-nereye');
+        $sefer->sure =$request->input('sefer-sure');
+        $sefer->tarih =$request->input('sefer-tarih');
+        $sefer->KM =$request->input('sefer-KM');
+        $sefer->save();
+        return redirect()->route('Sefer.index')->with('success', 'Record added successfully');
     }
     public function show(string $id)
     {
+        // Find the Sefer record by ID
+        $sefer = Sefer::find($id);
 
-        $air=self::getData();
-        $index=array_search($id,array_column(self::getData(),'id'));
-        if($index===false){
+        // Check if the Sefer record exists
+        if (!$sefer) {
             abort(404);
         }
-        return view('Sefer.show',['Sefer'=>$air[$index]]);
 
+        // Pass the Sefer record to the view
+        return view('Sefer.show', ['Sefer' => $sefer]);
     }
     public function edit(string $id)
     {
