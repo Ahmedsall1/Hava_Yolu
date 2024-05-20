@@ -1052,6 +1052,7 @@
         },
         {
             "name": "laravel/framework",
+<<<<<<< HEAD
             "version": "v11.7.0",
             "source": {
                 "type": "git",
@@ -1062,6 +1063,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/e5ac72f513f635f208024aa76b8a04efc1b47f93",
                 "reference": "e5ac72f513f635f208024aa76b8a04efc1b47f93",
+=======
+            "version": "v11.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "e090ee638ebd4ce221d8bad43b49bbf59ea70ae5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/e090ee638ebd4ce221d8bad43b49bbf59ea70ae5",
+                "reference": "e090ee638ebd4ce221d8bad43b49bbf59ea70ae5",
+>>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
                 "shasum": ""
             },
             "require": {
@@ -1253,7 +1266,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+<<<<<<< HEAD
             "time": "2024-05-07T13:41:51+00:00"
+=======
+            "time": "2024-04-30T13:30:08+00:00"
+>>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
         },
         {
             "name": "laravel/prompts",
@@ -2613,6 +2630,7 @@
         },
         {
             "name": "psr/http-factory",
+<<<<<<< HEAD
             "version": "1.1.0",
             "source": {
                 "type": "git",
@@ -2627,6 +2645,22 @@
             },
             "require": {
                 "php": ">=7.1",
+=======
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-factory.git",
+                "reference": "e616d01114759c4c489f93b099585439f795fe35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/e616d01114759c4c489f93b099585439f795fe35",
+                "reference": "e616d01114759c4c489f93b099585439f795fe35",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0",
+>>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
                 "psr/http-message": "^1.0 || ^2.0"
             },
             "type": "library",
@@ -2650,7 +2684,11 @@
                     "homepage": "https://www.php-fig.org/"
                 }
             ],
+<<<<<<< HEAD
             "description": "PSR-17: Common interfaces for PSR-7 HTTP message factories",
+=======
+            "description": "Common interfaces for PSR-7 HTTP message factories",
+>>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
             "keywords": [
                 "factory",
                 "http",
@@ -2662,9 +2700,15 @@
                 "response"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/php-fig/http-factory"
             },
             "time": "2024-04-15T12:06:14+00:00"
+=======
+                "source": "https://github.com/php-fig/http-factory/tree/1.0.2"
+            },
+            "time": "2023-04-10T20:10:41+00:00"
+>>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
         },
         {
             "name": "psr/http-message",
@@ -6010,6 +6054,7 @@
         },
         {
             "name": "mockery/mockery",
+<<<<<<< HEAD
             "version": "1.6.12",
             "source": {
                 "type": "git",
@@ -6020,6 +6065,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/mockery/mockery/zipball/1f4efdd7d3beafe9807b08156dfcb176d18f1699",
                 "reference": "1f4efdd7d3beafe9807b08156dfcb176d18f1699",
+=======
+            "version": "1.6.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mockery/mockery.git",
+                "reference": "81a161d0b135df89951abd52296adf97deb0723d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/81a161d0b135df89951abd52296adf97deb0723d",
+                "reference": "81a161d0b135df89951abd52296adf97deb0723d",
+>>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
                 "shasum": ""
             },
             "require": {
@@ -6089,7 +6146,11 @@
                 "security": "https://github.com/mockery/mockery/security/advisories",
                 "source": "https://github.com/mockery/mockery"
             },
+<<<<<<< HEAD
             "time": "2024-05-16T03:13:13+00:00"
+=======
+            "time": "2024-03-21T18:34:15+00:00"
+>>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
         },
         {
             "name": "myclabs/deep-copy",

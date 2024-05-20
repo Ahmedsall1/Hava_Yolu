@@ -22,7 +22,10 @@
             <a href="{{Route('about')}}">About</a>
             <a href="{{Route('Giris')}}">Giris</a>
             <a href="{{Route('Sefer.index')}}">Seferler</a>
+<<<<<<< HEAD
             <a href="{{Route('SeferBul')}}">SeferBul</a>
+=======
+>>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
         </nav>
     </div>
     @yield('content')

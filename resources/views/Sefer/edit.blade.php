@@ -24,7 +24,13 @@
                     @endforeach
                 </select>
             </div>
+<<<<<<< HEAD
 
+=======
+            @error('sefer-sure')
+                {{message}}
+            @enderror
+>>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
             <div class="form-group">
                 <label for="sefer-nereye">Nereye : </label>
                 <select class="form-control" id="sefer-nereye" name="sefer-nereye" value="{{$Sefer->nereye}}" required>
@@ -34,7 +40,14 @@
                 </select>
             </div>
 
+<<<<<<< HEAD
 
+=======
+            <div class="form-group">
+                <label for="sefer-sure">Sure : </label>
+                <input type="time" class="form-control" id="sefer-sure" name="sefer-sure" value="{{$Sefer->sure}}" required>
+            </div>
+>>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
 
             <div class="form-group">
                 <label for="sefer-KM">KM : </label>

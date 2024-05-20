@@ -23,7 +23,11 @@
                     @endforeach
                 </select>
             </div>
+<<<<<<< HEAD
             @error('sefer-KM')
+=======
+            @error('sefer-sure')
+>>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
                 {{message}}
             @enderror
             <div class="form-group">
@@ -35,10 +39,17 @@
                 </select>
             </div>
 
+<<<<<<< HEAD
             <!-- <div class="form-group">
                 <label for="sefer-sure">Sure : </label>
                 <input type="time" class="form-control" id="sefer-sure" name="sefer-sure" value="{{old('sefer-sure')}}" required>
             </div> -->
+=======
+            <div class="form-group">
+                <label for="sefer-sure">Sure : </label>
+                <input type="time" class="form-control" id="sefer-sure" name="sefer-sure" value="{{old('sefer-sure')}}" required>
+            </div>
+>>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
 
             <div class="form-group">
                 <label for="sefer-KM">KM : </label>

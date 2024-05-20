@@ -1,5 +1,6 @@
 # Release Notes
 
+<<<<<<< HEAD
 ## [Unreleased](https://github.com/laravel/laravel/compare/v11.0.7...11.x)
 
 ## [v11.0.7](https://github.com/laravel/laravel/compare/v11.0.6...v11.0.7) - 2024-05-03
@@ -10,6 +11,9 @@
 
 * Fix PHPUnit constraint by [@szepeviktor](https://github.com/szepeviktor) in https://github.com/laravel/laravel/pull/6389
 * [11.x] Add missing roundrobin transport driver config by [@u01jmg3](https://github.com/u01jmg3) in https://github.com/laravel/laravel/pull/6392
+=======
+## [Unreleased](https://github.com/laravel/laravel/compare/v11.0.5...11.x)
+>>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
 
 ## [v11.0.5](https://github.com/laravel/laravel/compare/v11.0.4...v11.0.5) - 2024-03-26
 
