@@ -1,3 +1,35 @@
+
+<h3>this project like the <a href="https://github.com/Ahmedsall1/HavaYolu-Bilgi-Sistemi-">HavaYolu-Bilgi-Sistemi</a> but with Laravel</h3>
+
+
+<h2><a href="https://github.com/Ahmedsall1/HavaYolu-Bilgi-Sistemi-/blob/main/NesneTabanliprogramlama.pdf">Rapor PDF</a></h2>
+
+
+<h2><a href="https://github.com/Ahmedsall1/HavaYolu-Bilgi-Sistemi-/blob/main/UML%20Diyagrami.pdf"> UML Diagram PDF </a></h2>
+
+
+<img src="https://github.com/Ahmedsall1/HavaYolu-Bilgi-Sistemi-/blob/main/foto/Screenshot%202024-04-03%20100524.png"  >
+
+<h2><a href="https://github.com/Ahmedsall1/HavaYolu-Bilgi-Sistemi-/blob/main/HavaYoluUseCaseDiyagram.pdf"> UseCase Diagram PDF</a> </h2>
+
+
+<img src="https://github.com/Ahmedsall1/HavaYolu-Bilgi-Sistemi-/blob/main/foto/Screenshot%202024-04-03%20100755.png" >
+
+<h2> <a href="https://github.com/Ahmedsall1/HavaYolu-Bilgi-Sistemi-/blob/main/SequenceDiagram.pdf">Sequence Diagram PDF</a> </h2>
+
+
+<img src="https://github.com/Ahmedsall1/HavaYolu-Bilgi-Sistemi-/blob/main/foto/Screenshot%202024-04-03%20100708.png" >
+
+
+
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
