@@ -22,6 +22,7 @@
             <a href="{{Route('about')}}">About</a>
             <a href="{{Route('Giris')}}">Giris</a>
             <a href="{{Route('Sefer.index')}}">Seferler</a>
+            <a href="{{Route('Ucus.index')}}">Ucusler</a>
 
             <a href="{{Route('SeferBul')}}">SeferBul</a>
 

@@ -34,6 +34,7 @@ Route::post('Yolcu/Biletlerim/{user_id}', [UcusController::class, 'login'])->nam
 
 Route::post('/register', [UcusController::class, 'register'])->name('Ucus.register');
 Route::get('/Yolcu/Biletlerim/{ucus_id}/{koltuk_id}/{user_id}', [UcusController::class, 'Biletlerim'])->name('Yolcu.Biletlerim');
+Route::get('/Yolcu/Bilet/{biletno}/{bilet_id}', [UcusController::class, 'Bilet'])->name('Ucus.Bilet');
 
 
 
@@ -51,7 +52,7 @@ Route::resource('Sefer',SeferController::class);
 Route::resource('Ucus',UcusController::class);
 
 
-Route::resource('Sefer',SeferController::class);
+
 
 
 

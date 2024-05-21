@@ -6,6 +6,12 @@
 <h2>Uçuş ID: {{ $ucus_id }}</h2>
 <h2>Koltuk ID: {{ $koltuk_id }}</h2>
 
+@foreach ($biletler as $bilet)
+
+<h4><a href="{{route('Ucus.Bilet',['biletno'=>$bilet['biletno'],'bilet_id'=>$bilet['id']])}}">{{$bilet->biletno}}</a></h4>
+
+@endforeach
+
 @endsection
 
 <script>

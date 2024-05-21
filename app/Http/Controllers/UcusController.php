@@ -19,7 +19,7 @@ class UcusController extends Controller
 
     public function index()
     {
-        //
+        return view('Ucus.index', ['Ucuslar' => Ucus::all()]);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    KoltukSec
     public function KoltukSec(string $id)
@@ -103,7 +103,7 @@ class UcusController extends Controller
 
         if (!$existingBilet) {
             // If no existing bilet, create a new one
-            $sayi = $user_id * 133 *$ucus_id * $koltuk_id;
+            $sayi = $user_id * 133 * $ucus_id * $koltuk_id;
             $bilet = new Bilet();
             $bilet->biletno = "TK{$sayi}";
             $bilet->yolcu_id = $user_id;
@@ -114,10 +114,33 @@ class UcusController extends Controller
 
             $bilet = $existingBilet;
         }
-
-        return view('Yolcu/Biletlerim', ['user_id' => $user_id, 'ucus_id' => $ucus_id, 'koltuk_id' => $koltuk_id]);
+        $biletler = Bilet::where('yolcu_id', $user_id)->get();
+        return view('Yolcu/Biletlerim', ['user_id' => $user_id, 'ucus_id' => $ucus_id, 'koltuk_id' => $koltuk_id, 'biletler' => $biletler]);
     }
 
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    bilet
+    public function Bilet($biletno, $bilet_id)
+    {
+        // Find the bilet or fail
+        $bilet = Bilet::findOrFail($bilet_id);
+
+        // Log the user ID
+        error_log('user' . $bilet->yolcu_id);
+
+        // Retrieve related models using the correct IDs
+        $ucus = Ucus::findOrFail($bilet->ucus_id);
+        $koltuk = Koltuk::findOrFail($bilet->koltuk_id);
+        $yolcu = User::findOrFail($bilet->yolcu_id);
+
+        // Return the view with the retrieved data
+        return view('Yolcu/Bilet', [
+            'yolcu' => $yolcu,
+            'koltuk' => $koltuk,
+            'ucus' => $ucus,
+            'bilet' => $bilet
+        ]);
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    login
     public function login(Request $request)
@@ -190,7 +213,8 @@ class UcusController extends Controller
 
     public function create()
     {
-        //
+        $Seferler = Sefer::all();
+        return view('Ucus.create', compact('Seferler'));
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -203,19 +227,35 @@ class UcusController extends Controller
 
     public function show(string $id)
     {
-        //
+
+        return view('Ucus.show', ['Ucus' => Ucus::findOrFail($id)]);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function edit(string $id)
     {
-        //
+        $Seferler = Sefer::all();
+        return view('Ucus.edit', ['Ucus' => Ucus::findOrFail($id)], compact('Seferler'));
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'sefer-nerden' => 'required',
+            'sefer-nereye' => 'required',
+            'sefer-tarih' => 'required',
+            'sefer-KM' => 'required|integer',
+        ]);
+        $sefer = Ucus::findOrFail($id);
+
+        // $sefer->nerden = strip_tags($request->input('sefer-nerden'));
+        // $sefer->nereye = strip_tags($request->input('sefer-nereye'));
+        // $sefer->tarih = strip_tags($request->input('sefer-tarih'));
+        // $sefer->KM = strip_tags($request->input('sefer-KM'));
+        // $sefer->save();
+        return redirect()->route('Ucus.show', $id)->with('success', 'Record added successfully');
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
