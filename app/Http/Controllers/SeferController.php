@@ -120,11 +120,7 @@ class SeferController extends Controller
         $request->validate([
             'sefer-nerden' => 'required',
             'sefer-nereye' => 'required',
-<<<<<<< HEAD
 
-=======
-            'sefer-sure' => 'required',
->>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
             'sefer-tarih' => 'required',
             'sefer-KM' => 'required|integer',
         ]);
@@ -132,15 +128,9 @@ class SeferController extends Controller
         $sefer = new Sefer();
         $sefer->nerden = strip_tags($request->input('sefer-nerden'));
         $sefer->nereye = strip_tags($request->input('sefer-nereye'));
-<<<<<<< HEAD
         // $sefer->sure = strip_tags($request->input('sefer-sure'));
         $sefer->tarih = strip_tags($request->input('sefer-tarih'));
         $sefer->km = strip_tags($request->input('sefer-KM'));
-=======
-        $sefer->sure = strip_tags($request->input('sefer-sure'));
-        $sefer->tarih = strip_tags($request->input('sefer-tarih'));
-        $sefer->KM = strip_tags($request->input('sefer-KM'));
->>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
         $sefer->save();
         return redirect()->route('Sefer.index')->with('success', 'Record added successfully');
     }
@@ -168,10 +158,6 @@ class SeferController extends Controller
         $request->validate([
             'sefer-nerden' => 'required',
             'sefer-nereye' => 'required',
-<<<<<<< HEAD
-=======
-            'sefer-sure' => 'required',
->>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
             'sefer-tarih' => 'required',
             'sefer-KM' => 'required|integer',
         ]);
@@ -179,10 +165,6 @@ class SeferController extends Controller
 
         $sefer->nerden = strip_tags($request->input('sefer-nerden'));
         $sefer->nereye = strip_tags($request->input('sefer-nereye'));
-<<<<<<< HEAD
-=======
-        $sefer->sure = strip_tags($request->input('sefer-sure'));
->>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
         $sefer->tarih = strip_tags($request->input('sefer-tarih'));
         $sefer->KM = strip_tags($request->input('sefer-KM'));
         $sefer->save();
@@ -190,10 +172,6 @@ class SeferController extends Controller
     }
     public function destroy(string $id)
     {
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
     }
 }

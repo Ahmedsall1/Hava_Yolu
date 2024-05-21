@@ -19,7 +19,7 @@
                 <tr>
             @endif
 
-            <td><a href="{{ route('Ucus.Kesinlestir', ['koltuk_id' => $koltuk->id, 'ucus_id' => $ucus->ucusno]) }}">{{ $koltuk->no }}</a></td>
+            <td><a href="{{ route('Ucus.Kesinlestir', ['ucus_id' => $ucus->id,'koltuk_id' => $koltuk->id]) }}">{{ $koltuk->no }}</a></td>
 
             @if (($index + 1) % 6 == 0)
                 </tr>

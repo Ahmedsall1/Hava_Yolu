@@ -7,11 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-<<<<<<< HEAD
 class User extends Authenticatable
-=======
-abstract class User extends Authenticatable
->>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
 {
     use HasFactory, Notifiable;
 
@@ -24,10 +20,7 @@ abstract class User extends Authenticatable
         'name',
         'email',
         'password',
-<<<<<<< HEAD
         'type',
-=======
->>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
     ];
 
     /**
@@ -52,8 +45,4 @@ abstract class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-<<<<<<< HEAD
-=======
-    abstract public function Gettip(): string;
->>>>>>> 79f7c714625517ade4b19aa85ada31f824c13217
 }

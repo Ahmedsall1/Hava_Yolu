@@ -11,7 +11,7 @@
 <h2>Nerden :{{ $sefer['nerden'] }} -> Nereye:{{ $sefer['nereye'] }} Tarih: {{ $sefer['tarih'] }}</h2>
 
 <h2>Uçuş Bilgileri</h2>
-@if ($ucuses->isEmpty())
+@if (is_null($ucuses) )
 <p>Bu sefer için uçuş bulunamadı.</p>
 @else
 <table class="table" border="1">
@@ -24,6 +24,7 @@
         </tr>
     </thead>
     <tbody>
+    @if ($ucuses)
         @foreach ($ucuses as $ucus)
 
         <tr>
@@ -34,8 +35,8 @@
                     if ($uc->id === $ucus->ucak_id) {
                         foreach ($sirket as $sir) {
                             if ($sir->id === $uc->sirket_id) {
-                            $airlineName = $sir->name;
-                            break 2;
+                                $airlineName = $sir->name;
+                                break 2;
                             }
                         }
                     }
@@ -51,6 +52,7 @@
         </tr>
 
         @endforeach
+    @endif
     </tbody>
 </table>
 @endif
