@@ -1,7 +1,11 @@
-body
-{
-    font-family: 'Nunito',sans-serif;
+body {
+    font-family: "Nunito", sans-serif;
 }
-nav a{
-    padding: .5rem  ;
+nav a {
+    padding: 0.5rem;
+}
+
+h1 {
+    color: aqua;
+    margin: 20px;
 }
