@@ -24,6 +24,7 @@
             <a href="{{Route('Sefer.index')}}">Seferler</a>
             <a href="{{Route('Ucus.index')}}">Ucusler</a>
 
+            <a href="{{Route('Ucak.index')}}">Ucaklar</a>
             <a href="{{Route('SeferBul')}}">SeferBul</a>
 
 

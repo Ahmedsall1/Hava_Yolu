@@ -5,6 +5,8 @@ use App\Http\Controllers\StaticController;
 use App\Http\Controllers\SeferController;
 
 use App\Http\Controllers\UcusController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UcakController;
 
 
 
@@ -50,6 +52,8 @@ Route::post('/login', [UcusController::class, 'login'])->name('Ucus.login');
 
 Route::resource('Sefer',SeferController::class);
 Route::resource('Ucus',UcusController::class);
+Route::resource('User',UserController::class);
+Route::resource('Ucak',UcakController::class);
 
 
 
