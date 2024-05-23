@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Bilet;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 class UserController extends Controller
 {
     public static $tip =array("Personel","Yolcu","Yonetici","Pilot","Hostese");
@@ -100,5 +103,33 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    ///////////////////////////////////////////////// login
+    public function login(Request $request)
+    {
+        // Validate the login data
+        $credentials = $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+
+        ]);
+
+        // Attempt to log the user in
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            return redirect()->route('User.Biletlerim', [
+                'user_id' => Auth::user()->id,
+            ])->with('success', 'Login successful!');
+        }
+
+        // If login attempt fails
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
+    public function Biletlerim($user_id)
+    {
+            $biletler = Bilet::where('yolcu_id', $user_id)->get();
+            return view('Yolcu/Biletlerim', ['user_id' => $user_id, 'biletler' => $biletler]);
     }
 }

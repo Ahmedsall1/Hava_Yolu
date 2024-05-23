@@ -97,32 +97,36 @@ class UcusController extends Controller
         ])->with('success', 'Registration successful!');
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    Biletlerim
-    public function Biletlerim($ucus_id, $koltuk_id, $user_id)
+    public function Biletlerim($ucus_id , $koltuk_id , $user_id)
     {
-        error_log('user' . $user_id . " ucus" . $ucus_id . " koltuk " . $koltuk_id);
 
-        // Check if the bilet already exists
-        $existingBilet = Bilet::where('ucus_id', $ucus_id)
-            ->where('koltuk_id', $koltuk_id)
-            ->where('yolcu_id', $user_id)
-            ->first();
 
-        if (!$existingBilet) {
-            // If no existing bilet, create a new one
-            $sayi = $user_id * 133 * $ucus_id * $koltuk_id;
-            $bilet = new Bilet();
-            $bilet->biletno = "TK{$sayi}";
-            $bilet->yolcu_id = $user_id;
-            $bilet->ucus_id = $ucus_id;
-            $bilet->koltuk_id = $koltuk_id;
-            $bilet->save();
-        } else {
+            error_log('user' . $user_id . " ucus" . $ucus_id . " koltuk " . $koltuk_id);
 
-            $bilet = $existingBilet;
-        }
-        $biletler = Bilet::where('yolcu_id', $user_id)->get();
-        return view('Yolcu/Biletlerim', ['user_id' => $user_id, 'ucus_id' => $ucus_id, 'koltuk_id' => $koltuk_id, 'biletler' => $biletler]);
+            // Check if the bilet already exists
+            $existingBilet = Bilet::where('ucus_id', $ucus_id)
+                ->where('koltuk_id', $koltuk_id)
+                ->where('yolcu_id', $user_id)
+                ->first();
+
+            if (!$existingBilet) {
+                // If no existing bilet, create a new one
+                $sayi = $user_id * 133 * $ucus_id * $koltuk_id;
+                $bilet = new Bilet();
+                $bilet->biletno = "TK{$sayi}";
+                $bilet->yolcu_id = $user_id;
+                $bilet->ucus_id = $ucus_id;
+                $bilet->koltuk_id = $koltuk_id;
+                $bilet->save();
+            } else {
+
+                $bilet = $existingBilet;
+            }
+            $biletler = Bilet::where('yolcu_id', $user_id)->get();
+            return view('Yolcu/Biletlerim', ['user_id' => $user_id, 'ucus_id' => $ucus_id, 'koltuk_id' => $koltuk_id, 'biletler' => $biletler]);
+
     }
+
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    bilet

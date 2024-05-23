@@ -15,20 +15,20 @@
 <table class="table" border="1">
     <tbody>
         @foreach ($ucakKoltuklari as $index => $koltuk)
-            @if ($index % 6 == 0)
-                <tr>
+        @if ($index % 6 == 0)
+        <tr>
             @endif
 
             <td><a href="{{ route('Ucus.Kesinlestir', ['ucus_id' => $ucus->id,'koltuk_id' => $koltuk->id]) }}">{{ $koltuk->no }}</a></td>
 
             @if (($index + 1) % 6 == 0)
-                </tr>
-            @endif
+        </tr>
+        @endif
         @endforeach
 
 
         @if (count($ucakKoltuklari) % 6 != 0)
-            </tr>
+        </tr>
         @endif
     </tbody>
 </table>
