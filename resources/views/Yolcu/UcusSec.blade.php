@@ -11,7 +11,7 @@
 <h2>Nerden :{{ $sefer['nerden'] }} -> Nereye:{{ $sefer['nereye'] }} Tarih: {{ $sefer['tarih'] }}</h2>
 
 <h2>Uçuş Bilgileri</h2>
-@if (is_null($ucuses) )
+@if (is_null($ucuses) ) <!-- Updated variable name to $ucuses -->
 <p>Bu sefer için uçuş bulunamadı.</p>
 @else
 <table class="table" border="1">
@@ -24,8 +24,8 @@
         </tr>
     </thead>
     <tbody>
-    @if ($ucuses)
-        @foreach ($ucuses as $ucus)
+    @if ($ucuses) <!-- Updated variable name to $ucuses -->
+        @foreach ($ucuses as $ucus) <!-- Updated variable name to $ucuses -->
 
         <tr>
             <td>

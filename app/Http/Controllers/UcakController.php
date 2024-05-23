@@ -64,6 +64,8 @@ class UcakController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $to_delete = Ucak::findOrFail($id);
+        $to_delete->delete();
+        return view('Ucak.index', ['Ucaklar' => Ucak::all()]);
     }
 }

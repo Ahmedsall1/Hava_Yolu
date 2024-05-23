@@ -1,14 +1,14 @@
 @extends('Layout')
 
 @section('content')
-<h1>Ucus Sec</h1>
+<h1>ucus Sec</h1>
 
 @if (session('success'))
 <div>{{ session('success') }}</div>
 @endif
 
 @if ($ucus)
-<h2>Ucus No :{{ $ucus['ucusno'] }} -> Sefer Id:{{ $ucus['sefer_id'] }} Ucret: {{ $ucus['ucret'] }}</h2>
+<h2>ucus No :{{ $ucus['ucusno'] }} -> Sefer Id:{{ $ucus['sefer_id'] }} Ucret: {{ $ucus['ucret'] }}</h2>
 
 <h2>Ucak Koltuklari</h2>
 

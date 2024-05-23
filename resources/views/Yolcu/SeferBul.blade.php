@@ -1,5 +1,8 @@
 @extends('Layout')
+
+
 @section('content')
+
 <h1>Sefer Bul</h1>
 
 

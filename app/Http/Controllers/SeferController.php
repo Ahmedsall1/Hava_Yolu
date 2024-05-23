@@ -151,7 +151,7 @@ class SeferController extends Controller
     public function edit(string $id)
     {
         $airports = self::$AirPorts;
-        return view('Sefer.edit', ['Sefer' => Sefer::findOrFail($id)],compact('airports'));
+        return view('Sefer.edit', ['Sefer' => Sefer::findOrFail($id)], compact('airports'));
     }
     public function update(Request $request, string $id)
     {
@@ -161,17 +161,20 @@ class SeferController extends Controller
             'sefer-tarih' => 'required',
             'sefer-KM' => 'required|integer',
         ]);
-        $sefer=Sefer::findOrFail($id);
+        $sefer = Sefer::findOrFail($id);
 
         $sefer->nerden = strip_tags($request->input('sefer-nerden'));
         $sefer->nereye = strip_tags($request->input('sefer-nereye'));
         $sefer->tarih = strip_tags($request->input('sefer-tarih'));
         $sefer->KM = strip_tags($request->input('sefer-KM'));
         $sefer->save();
-        return redirect()->route('Sefer.show',$id)->with('success', 'Record added successfully');
+        return redirect()->route('Sefer.show', $id)->with('success', 'Record added successfully');
     }
     public function destroy(string $id)
     {
 
+        $to_delete = Sefer::findOrFail($id);
+        $to_delete->delete();
+        return view('Sefer.index', ['Seferler' => Sefer::all()]);
     }
 }
