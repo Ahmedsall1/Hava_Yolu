@@ -7,6 +7,7 @@ use App\Http\Controllers\SeferController;
 use App\Http\Controllers\UcusController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UcakController;
+use App\Http\Controllers\SirketController;
 
 
 
@@ -56,6 +57,7 @@ Route::resource('Ucus',UcusController::class);
 Route::resource('User',UserController::class);
 Route::resource('Ucak',UcakController::class);
 Route::resource('User',UserController::class);
+Route::resource('Sirket',SirketController::class);
 
 
 Route::post('/Yolcu/Giris', [UserController::class, 'login'])->name('User.login');

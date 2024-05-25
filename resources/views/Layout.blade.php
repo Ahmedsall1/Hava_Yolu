@@ -26,6 +26,7 @@
 
             <a href="{{Route('Ucak.index')}}">Ucaklar</a>
             <a href="{{Route('SeferBul')}}">SeferBul</a>
+            <a href="{{Route('Sirket.index')}}">Sirketler</a>
 
 
         </nav>
