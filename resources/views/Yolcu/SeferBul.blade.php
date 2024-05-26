@@ -1,16 +1,29 @@
 @extends('Layout')
 
+@section('styles')
 
+@endsection
 @section('content')
 
-<h1>Sefer Bul</h1>
 
 
 <form action="{{route('Ucus.find')}}" method="POST">
             @csrf
-            <div class="form-group">
-                <label for="sefer-nerden">Nerden : </label>
-                <select class="form-control" id="sefer-nerden" name="sefer-nerden" required>
+
+            <div class="container" >
+                <img class="soora" style="color: #005096;"
+                    src="{{asset('images\logo.png')}}"
+                    alt="">
+
+            <div>
+
+            <div class="form-group"  >
+
+                <label for="sefer-nerden" style="color: rgb(253, 222, 85, 1); font-size: 30px;">
+                <img width="50" height ="50"
+                    src="{{asset('images\Ucus.png')}}"
+                    alt=""> Nerden : </label>
+                <select class="form-control" id="sefer-nerden" name="sefer-nerden" required style="color: #005096;">
                     @foreach($airports as $airport)
                     <option value="{{ $airport }}">{{ $airport }}</option>
                     @endforeach
@@ -18,8 +31,11 @@
             </div>
 
             <div class="form-group">
-                <label for="sefer-nereye">Nereye : </label>
-                <select class="form-control" id="sefer-nereye" name="sefer-nereye" required>
+                <label for="sefer-nereye" style="color: rgb(253, 222, 85, 1); font-size: 30px;">
+                <img width="50" height ="50" 
+                    src="{{asset('images\inis.png')}}"
+                    alt="">Nereye : </label>
+                <select class="form-control" id="sefer-nereye" name="sefer-nereye" required style="color: #005096;">
                     @foreach($airports as $airport)
                     <option value="{{ $airport }}">{{ $airport }}</option>
                     @endforeach
@@ -31,12 +47,15 @@
 
             <div class="form-group">
                 <label for="sefer-tarih">Tarih : </label>
-                <input type="date" class="form-control" id="sefer-tarih" name="sefer-tarih" value="{{old('sefer-tarih')}}" required>
+                <input type="date" class="form-control" id="sefer-tarih" name="sefer-tarih" value="{{old('sefer-tarih')}}" style="color: #005096;" required>
             </div>
 
 
-            <button type="submit" class="btn btn-primary">Sefer Bul</button>
+            <button type="submit" class="submit">Sefer Bul</button>
+            </div>
+            </div>
         </form>
 
-@endsection
-@section('title','Sefer Bul')
+        @endsection
+        @section('title','Sefer Bul')
+

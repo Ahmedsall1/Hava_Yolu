@@ -1,11 +1,73 @@
-body {
-    font-family: "Nunito", sans-serif;
-}
-nav a {
-    padding: 0.5rem;
-}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Times New Roman";
+  }
 
-h1 {
-    color: aqua;
-    margin: 20px;
-}
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #005096;
+    margin-top: 20px;
+  }
+
+  .navbar a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(253, 222, 85, 1);
+    padding: 15px;
+    transition: 0.7s;
+  }
+
+  .navbar a :hover {
+    background-color: rgb(255, 0, 80, 150);
+  }
+
+  .container {
+    background-color: #005096;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 70px 50px 300px;
+    width: 900px;
+    border-radius: 20px;
+  }
+
+  .soora {
+    width: 500px;
+    height: 500px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    opacity: 0.9;
+  }
+  .form-group {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    color: aliceblue;
+  }
+
+  .sefer-label {
+    margin-top: 20px;
+    
+  }
+
+  .form-control {
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+  }
+
+  .submit {
+    margin-left: 170px;
+    margin-top: 40px;
+    padding: 7px 10px;
+    border-radius: 10px;
+    background-color: rgb(253, 222, 85, 1);
+    cursor: pointer;
+  }

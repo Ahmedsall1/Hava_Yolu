@@ -7,18 +7,19 @@
 
     <title>@yield('title')</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
     <!-- Styles -->
-    <link href="{{url('css/style.css')}}" rel="stylesheet" />
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
+    @yield('styles')
 </head>
 
 <body class="antialiased">
     <div>
-        <nav><a href="{{Route('index')}}">AnaSayfa</a>
+        <nav class="navbar">
+        <img width="300" height ="60"
+                    src="{{asset('images\LeftLogo.png')}}"
+                    alt="">
+        <a href="{{Route('index')}}">AnaSayfa</a>
             <a href="{{Route('about')}}">About</a>
             <a href="{{Route('Giris')}}">Giris</a>
             <a href="{{Route('Sefer.index')}}">Seferler</a>
