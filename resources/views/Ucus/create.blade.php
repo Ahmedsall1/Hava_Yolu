@@ -11,13 +11,6 @@
 
         <form action="{{route('Ucus.store')}}" method="POST">
             @csrf
-            <div class="form-group">
-                <label for="Ucus-nerden">Nerden : </label>
-
-            </div>
-
-
-
 
 
             <div class="form-group">
@@ -40,13 +33,9 @@
 
             <div class="form-group">
                 <label for="Ucus-ucusno">Ucus No : </label>
-                <input type="text" class="form-control" id="Ucus-ucusno" name="Ucus-ucusno" value="" required>
+                <input type="text" class="form-control" id="Ucus-ucusno" name="Ucus-ucusno" value="{old('Ucus-ucusno')}" required>
             </div>
 
-            <!-- <div class="form-group">
-                <label for="Ucus-sure">Sure : </label>
-                <input type="time" class="form-control" id="Ucus-sure" name="Ucus-sure" value="{{old('Ucus-sure')}}" required>
-            </div> -->
 
             <div class="form-group">
                 <label for="Ucus-sure">Sure : </label>

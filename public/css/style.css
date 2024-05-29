@@ -9,7 +9,7 @@
     justify-content: space-around;
     align-items: center;
     background-color: #005096;
-    margin-top: 20px;
+ 
   }
 
   .navbar a {
@@ -54,7 +54,7 @@
 
   .sefer-label {
     margin-top: 20px;
-    
+
   }
 
   .form-control {
@@ -71,3 +71,18 @@
     background-color: rgb(253, 222, 85, 1);
     cursor: pointer;
   }
+.icon
+{
+    filter: invert(75%) sepia(100%) saturate(1000%) hue-rotate(0deg);
+
+
+}
+label{
+    color: rgb(253, 222, 85, 1);
+    font-size: 30px;
+}
+.submit
+{
+    color: #005096;
+
+}

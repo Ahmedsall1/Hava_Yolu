@@ -15,13 +15,13 @@
 
 <body class="antialiased">
     <div>
+
         <nav class="navbar">
-        <img width="300" height ="60"
-                    src="{{asset('images\LeftLogo.png')}}"
-                    alt="">
-        <a href="{{Route('index')}}">AnaSayfa</a>
+            <img width="300" height="60" src="{{asset('images\LeftLogo.png')}}" alt="">
+            <a href="{{Route('index')}}">AnaSayfa</a>
             <a href="{{Route('about')}}">About</a>
             <a href="{{Route('Giris')}}">Giris</a>
+            <a href="{{Route('Sorgula')}}">Sorgula</a>
             <a href="{{Route('Sefer.index')}}">Seferler</a>
             <a href="{{Route('Ucus.index')}}">Ucusler</a>
 
@@ -32,7 +32,8 @@
 
         </nav>
     </div>
-    @yield('content')
+    <div class="centerr">
+    @yield('content')</div>
 </body>
 
 </html>

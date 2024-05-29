@@ -1,8 +1,8 @@
 @extends('Layout')
 @section('content')
-<h1>Giris</h1>
+
 <div id="loginForm">
-    <h2>Giriş yap</h2>
+    <h1>Giriş yap</h1>
     <form action="{{ route('User.login') }}" method="POST">
         @csrf
 

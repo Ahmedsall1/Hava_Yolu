@@ -24,12 +24,9 @@
                 </select>
             </div>
 
-            @error('sefer-KM')
 
-            @error('sefer-sure')
 
-                {{message}}
-            @enderror
+            
             <div class="form-group">
                 <label for="sefer-nereye">Nereye : </label>
                 <select class="form-control" id="sefer-nereye" name="sefer-nereye" required>
@@ -38,18 +35,6 @@
                     @endforeach
                 </select>
             </div>
-
-
-            <!-- <div class="form-group">
-                <label for="sefer-sure">Sure : </label>
-                <input type="time" class="form-control" id="sefer-sure" name="sefer-sure" value="{{old('sefer-sure')}}" required>
-            </div> -->
-
-            <div class="form-group">
-                <label for="sefer-sure">Sure : </label>
-                <input type="time" class="form-control" id="sefer-sure" name="sefer-sure" value="{{old('sefer-sure')}}" required>
-            </div>
-
 
             <div class="form-group">
                 <label for="sefer-KM">KM : </label>

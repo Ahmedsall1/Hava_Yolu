@@ -23,6 +23,7 @@ use App\Http\Controllers\SirketController;
 Route::get('/',[StaticController::class,'index'])->name('index');
 Route::get('/about',[StaticController::class,'about'])->name('about');
 Route::get('/Giris',[StaticController::class,'Giris'])->name('Giris');
+Route::get('/Sorgula',[StaticController::class,'Sorgula'])->name('Sorgula');
 
 Route::get('Yolcu/SeferBul',[StaticController::class,'SeferBul'])->name('SeferBul');
 
@@ -41,6 +42,7 @@ Route::get('/Yolcu/Biletlerim/{ucus_id}/{koltuk_id}/{user_id}', [UcusController:
 Route::get('/Yolcu/Bilet/{biletno}/{bilet_id}', [UcusController::class, 'Bilet'])->name('Ucus.Bilet');
 
 
+Route::post('/Sorgula', [UcusController::class, 'Sorgula'])->name('Ucus.Sorgula');
 
 
 Route::post('/login', [UcusController::class, 'login'])->name('Ucus.login');

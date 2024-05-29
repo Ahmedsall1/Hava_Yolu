@@ -8,21 +8,17 @@
 
 
 <form action="{{route('Ucus.find')}}" method="POST">
-            @csrf
+    @csrf
 
-            <div class="container" >
-                <img class="soora" style="color: #005096;"
-                    src="{{asset('images\logo.png')}}"
-                    alt="">
+    <div class="container">
+        <img class="soora" style="color: #005096;" src="{{asset('images\logo.png')}}" alt="">
 
-            <div>
+        <div>
 
-            <div class="form-group"  >
+            <div class="form-group">
 
-                <label for="sefer-nerden" style="color: rgb(253, 222, 85, 1); font-size: 30px;">
-                <img width="50" height ="50"
-                    src="{{asset('images\Ucus.png')}}"
-                    alt=""> Nerden : </label>
+                <label for="sefer-nerden" >
+                    <img class="icon" width="50" height="50" src="{{asset('images\Ucus.png')}}" alt="" > Nerden : </label>
                 <select class="form-control" id="sefer-nerden" name="sefer-nerden" required style="color: #005096;">
                     @foreach($airports as $airport)
                     <option value="{{ $airport }}">{{ $airport }}</option>
@@ -31,10 +27,8 @@
             </div>
 
             <div class="form-group">
-                <label for="sefer-nereye" style="color: rgb(253, 222, 85, 1); font-size: 30px;">
-                <img width="50" height ="50" 
-                    src="{{asset('images\inis.png')}}"
-                    alt="">Nereye : </label>
+                <label for="sefer-nereye" >
+                    <img class="icon" width="50" height="50" src="{{asset('images\inis.png')}}" alt="">Nereye : </label>
                 <select class="form-control" id="sefer-nereye" name="sefer-nereye" required style="color: #005096;">
                     @foreach($airports as $airport)
                     <option value="{{ $airport }}">{{ $airport }}</option>
@@ -51,11 +45,10 @@
             </div>
 
 
-            <button type="submit" class="submit">Sefer Bul</button>
-            </div>
-            </div>
-        </form>
+            <button type="submit" class="submit" style="color: #005096;">Sefer Bul</button>
+        </div>
+    </div>
+</form>
 
-        @endsection
-        @section('title','Sefer Bul')
-
+@endsection
+@section('title','Sefer Bul')

@@ -231,28 +231,48 @@ class UcusController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'ucus-sefer' => 'required',
-            'ucus-ucak' => 'required',
-            'ucus-sure' => 'required',
-            'ucus-saat' => 'required',
-            'ucus-ucret' => 'required',
-            'ucus-ucusno' => 'required',
+            'Ucus-sefer' => 'required',
+            'Ucus-ucak' => 'required',
+            'Ucus-sure' => 'required',
+            'Ucus-saat' => 'required',
+            'Ucus-ucret' => 'required',
+            'Ucus-ucusno' => 'required',
         ]);
         $ucus = new Ucus();
-        $ucus->sefer_id = strip_tags($request->input('ucus-sefer'));
-        $ucus->ucusno = strip_tags($request->input('ucus-ucusno'));
-        $ucus->ucak_id = strip_tags($request->input('ucus-ucak'));
-        $ucus->sure = strip_tags($request->input('ucus-sure'));
-        $ucus->saat = strip_tags($request->input('ucus-saat'));
-        $ucus->ucret = strip_tags($request->input('ucus-ucret'));
+        $ucus->sefer_id = strip_tags($request->input('Ucus-sefer'));
+        $ucus->ucusno = strip_tags($request->input('Ucus-ucusno'));
+        $ucus->ucak_id = strip_tags($request->input('Ucus-ucak'));
+        $ucus->sure = strip_tags($request->input('Ucus-sure'));
+        $ucus->saat = strip_tags($request->input('Ucus-saat'));
+        $ucus->ucret = strip_tags($request->input('Ucus-ucret'));
         $ucus->save();
-        return redirect()->route('ucus.index')->with('success', 'Record added successfully');
+        return redirect()->route('Ucus.index')->with('success', 'Record added successfully');
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function show(string $id)
     {
-        return view('ucus.show', ['ucus' => Ucus::findOrFail($id)]);
+        return view('Ucus.show', ['ucus' => Ucus::findOrFail($id)]);
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public function Sorgula(Request $request){
+        $request->validate([
+            'biletno' => 'required',
+            'adi' => 'required',
+        ]);
+        $biletno=strip_tags($request->input('biletno'));
+        $useradi=strip_tags($request->input('adi'));
+
+        $user = User::where('name', strip_tags($request->input('adi')))->get();
+        $bilet=Bilet::where('biletno', strip_tags($request->input('biletno')))->get();
+
+        if($bilet->yolcu_id == $user->id){
+            return redirect()->route('Yolcu.Bilet', [
+                'biletno' => $biletno,
+                'bilet_id' => $bilet->id,
+            ])->with('success', 'Login successful!');
+        }
+
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
