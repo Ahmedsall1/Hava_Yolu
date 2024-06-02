@@ -29,6 +29,16 @@
             <a href="{{Route('SeferBul')}}">SeferBul</a>
             <a href="{{Route('Sirket.index')}}">Sirketler</a>
 
+            @if(session()->has('user'))
+            <span>{{ session('user')->name }}</span>
+            <form action="{{ Route('Giris') }}" method="POST">
+                @csrf
+                <button type="submit">{{ __('Giris') }}</button>
+            </form>
+        @else
+            <a href="{{ Route('Giris') }}">{{ __('Giris ') }}</a>
+        @endif
+        @include('partials.search-form')
 
         </nav>
     </div>

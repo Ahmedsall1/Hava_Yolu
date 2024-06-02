@@ -76,10 +76,13 @@ Route::get('/Tr', function () {
     return 'No Style';
 });
 
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::post('/login', [UserController::class, 'login']);
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 
 
-
+Route::get('Sefer/search', [SeferController::class, 'search'])->name('Sefer.search');
 //          MVC
 
 // Model -> data

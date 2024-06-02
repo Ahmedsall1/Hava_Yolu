@@ -106,9 +106,10 @@ class SeferController extends Controller
     );
 
     public function index()
-    {
-        return view('Sefer.index', ['Seferler' => Sefer::all()]);
-    }
+{
+    $seferler = Sefer::paginate(15);
+    return view('Sefer.index', ['Seferler' => $seferler]);
+}
     public function create()
     {
         $airports = self::$AirPorts;
@@ -176,5 +177,12 @@ class SeferController extends Controller
         $to_delete = Sefer::findOrFail($id);
         $to_delete->delete();
         return view('Sefer.index', ['Seferler' => Sefer::all()]);
+    }
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $sefers = Sefer::search($query);
+
+        return view('Sefer.results', compact('sefers', 'query'));
     }
 }

@@ -221,7 +221,7 @@ class UcusController extends Controller
 
     public function create()
     {
-        $Seferler = Sefer::all();
+        $Seferler = Sefer::paginate(15);
         $ucaklar = Ucak::all();
         return view('ucus.create', compact('Seferler', 'ucaklar'));
     }
@@ -260,20 +260,32 @@ class UcusController extends Controller
             'biletno' => 'required',
             'adi' => 'required',
         ]);
-        $biletno=strip_tags($request->input('biletno'));
-        $useradi=strip_tags($request->input('adi'));
 
-        $user = User::where('name', strip_tags($request->input('adi')))->get();
-        $bilet=Bilet::where('biletno', strip_tags($request->input('biletno')))->get();
+        $biletno = strip_tags($request->input('biletno'));
+        $useradi = strip_tags($request->input('adi'));
 
-        if($bilet->yolcu_id == $user->id){
-            return redirect()->route('Yolcu.Bilet', [
-                'biletno' => $biletno,
-                'bilet_id' => $bilet->id,
-            ])->with('success', 'Login successful!');
+
+        $user = User::where('name', $useradi)->first();
+
+
+        $bilet = Bilet::where('biletno', $biletno)->first();
+
+
+        if($user && $bilet) {
+
+            if($bilet->yolcu_id == $user->id){
+                return redirect()->route('Ucus.Bilet', [
+                    'biletno' => $biletno,
+                    'bilet_id' => $bilet->id,
+                ])->with('success', 'Login successful!');
+            } else {
+                return back()->withErrors(['msg' => 'Ticket does not belong to the user.']);
+            }
+        } else {
+            return back()->withErrors(['msg' => 'User or ticket not found.']);
         }
-
     }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function edit(string $id)
