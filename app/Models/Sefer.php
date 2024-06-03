@@ -9,7 +9,7 @@ class Sefer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nerden', 'nereye', 'km', 'tarih'];
+    protected $fillable = ['nerden', 'nereye', 'tarih'];
 
     public static function search($query)
     {

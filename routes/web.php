@@ -33,7 +33,7 @@ Route::get('Yolcu/KoltukSec/{id}', [UcusController::class, 'KoltukSec'])->name('
 Route::get('Yolcu/Kesinlestir/{ucus_id}/{koltuk_id}', [UcusController::class, 'Kesinlestir'])->name('Ucus.Kesinlestir');
 
 Route::post('Yolcu/Biletlerim/register/{user_id}', [UcusController::class, 'register'])->name('Ucus.register');
-Route::post('Yolcu/Biletlerim/login/{user_id}', [UcusController::class, 'login'])->name('Ucus.login');
+Route::post('Yolcu/Biletlerim/login', [UcusController::class, 'login'])->name('Ucus.login');
 
 
 Route::post('/register', [UcusController::class, 'register'])->name('Ucus.register');

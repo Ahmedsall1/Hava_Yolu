@@ -5,6 +5,8 @@
     <ul>
         @foreach ($Sirketler as $x)
         <li>
+            <img src="{{$x->image}}" alt="{{ $x->name }}" width="50" height="50">
+
             <a href="{{ route('Sirket.show', ['Sirket' => $x['id']]) }}">ID: {{ $x['id'] }} Sirket ADI: {{ $x['name'] }} Yonetici ID: {{ $x['yonetici_id'] }} </a>
             <a href="{{ route('Sirket.edit', ['Sirket' => $x['id']]) }}">Düzenle</a>
             <form action="{{route('Sirket.destroy',['Sirket'=>$x['id']] ) }}" method="post">

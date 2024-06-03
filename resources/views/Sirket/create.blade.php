@@ -9,12 +9,8 @@
 
 
 
-        <form action="{{route('Sirket.store')}}" method="POST">
+        <form action="{{route('Sirket.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
-
-
-
-
 
 
             <div class="form-group">
@@ -30,18 +26,19 @@
 
             <div class="form-group">
                 <label for="Sirket-name">Sirket ADI : </label>
-                <input type="text" class="form-control" id="Sirket-name" name="Sirket-name" value="" required>
+                <input type="text" class="form-control" id="Sirket-name" name="Sirket-name" required>
             </div>
 
-            <!-- <div class="form-group">
-                <label for="Sirket-sure">Sure : </label>
-                <input type="time" class="form-control" id="Sirket-sure" name="Sirket-sure" value="{{old('Sirket-sure')}}" required>
-            </div> -->
+            <div class="form-group">
+                <label for="Sirket-image">Sirket Image:</label>
+                <input class="form-control" type="file" id="Sirket-image" name="Sirket-image" required>
+            </div>
 
 
-            <button type="submit" class="btn btn-primary">Kaydet</button>
+            <button type="submit" class="form-control">Kaydet</button>
         </form>
     </div>
+
 
 </div>
 @endsection

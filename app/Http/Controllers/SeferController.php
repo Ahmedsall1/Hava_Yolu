@@ -181,8 +181,12 @@ class SeferController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
-        $sefers = Sefer::search($query);
+        $sefers = Sefer::where('nerden', 'like', "%{$query}%")
+                        ->orWhere('nereye', 'like', "%{$query}%")
+                        ->orWhere('tarih', 'like', "%{$query}%")
+                        ->get();
 
         return view('Sefer.results', compact('sefers', 'query'));
     }
+    
 }

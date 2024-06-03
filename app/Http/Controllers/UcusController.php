@@ -19,7 +19,9 @@ class UcusController extends Controller
 
     public function index()
     {
-        return view('ucus.index', ['ucuslar' => Ucus::all()]);
+
+        $ucusler = Ucus::paginate(15);
+        return view('ucus.index', ['ucuslar' => $ucusler]);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    KoltukSec
     public function KoltukSec($id)
@@ -291,8 +293,8 @@ class UcusController extends Controller
     public function edit(string $id)
     {
         $ucaklar = Ucak::all();
-        $Seferler = Sefer::all();
-        return view('ucus.edit', ['ucus' => ucus::findOrFail($id)], compact('Seferler', 'ucaklar'));
+        $Seferler = Sefer::paginate(15);
+        return view('Ucus.edit', ['Ucus' => Ucus::findOrFail($id)], compact('Seferler', 'ucaklar'));
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

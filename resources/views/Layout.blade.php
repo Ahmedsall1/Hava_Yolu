@@ -38,7 +38,12 @@
         @else
             <a href="{{ Route('Giris') }}">{{ __('Giris ') }}</a>
         @endif
-        @include('partials.search-form')
+        <div>
+            <form action="{{ route('Sefer.search') }}" method="GET">
+                <input type="text" name="query" placeholder="Search Sefer..." required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
 
         </nav>
     </div>

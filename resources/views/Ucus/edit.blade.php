@@ -29,7 +29,7 @@
                 <select class="form-control" id="Ucus-sefer" name="Ucus-sefer" value="{{$Ucus->sefer}}" required>
                     @foreach($Seferler as $airport)
                     <!-- {{ $Ucus->sefer == $airport ? 'selected' : '' }} -->
-                    <option value="{{ $airport->id }}" >{{ $airport->id   }} {{$airport->nerden}} -> {{$airport->sefer}} {{$airport->tarih}}</option>
+                    <option value="{{ $airport->id }}" >{{ $airport->id   }} {{$airport->nerden}} -> {{$airport->nereye}} {{$airport->tarih}}</option>
                     @endforeach
                 </select>
             </div>
