@@ -25,15 +25,15 @@ class UcusSeeder extends Seeder
         $maxSeferId = 291782;
 
         for ($i = 9031; $i <= $maxSeferId; $i++) {
-            $t = $i;
-            foreach ($Saat as $saat) {
+            $t = ($i*4) -65;
+
 
                 $ucuses[] = [
-                    'ucret' => (($i % 10) + 1) * 1000,
+                    'ucret' =>  1300,
                     'ucusno' => "HYL.{$t}",
                     'sefer_id' => $i,
-                    'ucak_id' => 1,
-                    'saat' => $saat,
+                    'ucak_id' => 3,
+                    'saat' => '23:15:00',
                     'sure' => '01:30:00',
                 ];
                 $t++;
@@ -43,7 +43,7 @@ class UcusSeeder extends Seeder
                     $batchCount++;
                     echo "Batch {$batchCount} inserted.\n";
                 }
-            }
+
         }
 
         if (!empty($ucuses)) {

@@ -32,11 +32,13 @@ class UcusController extends Controller
         error_log('Ucak ID ' . $ucak->id);
 
         $ucaktipiTable = null;
-
+        $harf=6;
         if ($ucak->tipi == "orta") {
             $ucaktipiTable = 'ucaktipi_2s';
+
         } elseif ($ucak->tipi == "kucuk") {
             $ucaktipiTable = 'ucaktipi_3s';
+            $harf=4;
         } else {
             $ucaktipiTable = 'ucaktipi_1s';
         }
@@ -55,7 +57,8 @@ class UcusController extends Controller
 
         return view('Yolcu/KoltukSec', [
             'ucus' => $ucuses,
-            'ucakKoltuklari' => $bosKoltuklar
+            'ucakKoltuklari' => $bosKoltuklar,
+            'harf'=>$harf,
         ]);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    Kesinlestir

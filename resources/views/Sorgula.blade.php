@@ -4,9 +4,10 @@
 
 <div id="Sorgula">
 
+
     <form action="{{ route('Ucus.Sorgula') }}" method="POST">
         @csrf
-
+        <div class="container">
         <div class="form-group">
             <label for="biletno">Bilet Numarasi: </label>
             <input type="text" class="form-control" id="biletno" name="biletno" value="{{ old('biletno') }}" required>
@@ -16,6 +17,7 @@
             <input type="text" class="form-control" id="adi" name="adi" required>
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
+        </div>
     </form>
 </div>
 

@@ -5,7 +5,7 @@
     <h1>Giriş yap</h1>
     <form action="{{ route('User.login') }}" method="POST">
         @csrf
-
+        <div class="container">
         <div class="form-group">
             <label for="email">Email: </label>
             <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
@@ -15,6 +15,7 @@
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
+        </div>
     </form>
 </div>
 

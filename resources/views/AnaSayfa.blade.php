@@ -7,7 +7,7 @@
         <img class="soora" style="color: #005096;" src="{{asset('images\logo.png')}}" alt="">
 
         <div>
-
+            
             <div class="form-group">
 
                 <label for="sefer-nerden">

@@ -19,6 +19,7 @@
         <nav class="navbar">
             <img width="300" height="60" src="{{asset('images\LeftLogo.png')}}" alt="">
             <a href="{{Route('index')}}">AnaSayfa</a>
+            <a href="{{Route('SeferBul')}}">SeferBul</a>
             <a href="{{Route('about')}}">About</a>
             <a href="{{Route('Giris')}}">Giris</a>
             <a href="{{Route('Sorgula')}}">Sorgula</a>
@@ -26,7 +27,7 @@
             <a href="{{Route('Ucus.index')}}">Ucusler</a>
 
             <a href="{{Route('Ucak.index')}}">Ucaklar</a>
-            <a href="{{Route('SeferBul')}}">SeferBul</a>
+
             <a href="{{Route('Sirket.index')}}">Sirketler</a>
 
             @if(session()->has('user'))
