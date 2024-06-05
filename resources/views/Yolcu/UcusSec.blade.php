@@ -14,11 +14,11 @@
             <div>
 
                 <div class="form-group">
-                    <h4 style=" color:rgb(253, 222, 85, 1);">Nerden :{{ $sefer['nerden'] }} -> Nereye:{{ $sefer['nereye'] }}
+                    <h4 style=" color:rgb(253, 222, 85, 1);">
                     </h4>
                 </div>
                 <div class="form-group">
-                    <h3>Tarih: {{ $sefer['tarih'] }}</h3>
+                    <h3></h3>
                 </div>
             </div>
         </div>
@@ -28,9 +28,17 @@
         @if (is_null($ucuses)) <!-- Updated variable name to $ucuses -->
             <p>Bu sefer için uçuş bulunamadı.</p>
         @else
-        <div class="container">
-            <table class="table" border="1" >
+        <div class="seferContainer">
+            <table class="table">
                 <thead style=" color:rgb(253, 222, 85, 1);">
+                    
+                    <tr>
+                        <td style="color: rgb(255, 255, 255)">Tarih: {{ $sefer['tarih'] }}</td>
+                        <td>Nerden :{{ $sefer['nerden'] }} -> Nereye:{{ $sefer['nereye'] }}</td>
+                    </tr>
+                    <tr>
+
+                    </tr>
                     <tr>
                         <th>Sirket</th>
                         <th>Uçuş No</th>

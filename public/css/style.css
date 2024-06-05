@@ -9,7 +9,7 @@
     justify-content: space-around;
     align-items: center;
     background-color: #005096;
- 
+
   }
 
   .navbar a {
@@ -74,15 +74,72 @@
 .icon
 {
     filter: invert(75%) sepia(100%) saturate(1000%) hue-rotate(0deg);
+    margin-top: 30px !important;
 
 
 }
 label{
     color: rgb(253, 222, 85, 1);
     font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 10px;
 }
 .submit
 {
     color: #005096;
 
+}
+
+.sefer-nereye{
+
+}
+.seferContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+table{
+    border-collapse: collapse;
+}
+tbody
+{
+
+
+
+}
+
+td
+{
+    border: none;
+
+
+
+}
+
+tr
+{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    background-color: #005096;
+    border-radius: 10px;
+    padding:0px 20px;
+    width: 900px;
+}
+
+.koltuk
+{
+    text-align: center;
+    align-content: center;
+    
+    border-radius: 5px;
+    height: 35px;
+    width: 35px;
 }

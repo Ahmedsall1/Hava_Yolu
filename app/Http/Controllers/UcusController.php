@@ -32,13 +32,12 @@ class UcusController extends Controller
         error_log('Ucak ID ' . $ucak->id);
 
         $ucaktipiTable = null;
-        $harf=6;
+        $harf = 6;
         if ($ucak->tipi == "orta") {
             $ucaktipiTable = 'ucaktipi_2s';
-
         } elseif ($ucak->tipi == "kucuk") {
             $ucaktipiTable = 'ucaktipi_3s';
-            $harf=4;
+            $harf = 4;
         } else {
             $ucaktipiTable = 'ucaktipi_1s';
         }
@@ -58,15 +57,40 @@ class UcusController extends Controller
         return view('Yolcu/KoltukSec', [
             'ucus' => $ucuses,
             'ucakKoltuklari' => $bosKoltuklar,
-            'harf'=>$harf,
+            'harf' => $harf,
+            'dolukoltuk'=>$biletler
         ]);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    Kesinlestir
-    public function Kesinlestir(string $ucus_id, string $koltuk_id)
+    public function Kesinlestir($ucus_id, $koltuk_id)
     {
+        $ucus = Ucus::findOrFail($ucus_id);
+        $koltuk = Koltuk::findOrFail($koltuk_id);
+        $sefer= Sefer::findOrFail($ucus->sefer_id);
+        $ucret = $ucus->ucret;
+        if ($koltuk->id <= 60) {
+            $ucret= $ucus->ucret- ($ucus->ucret*0.2);
+        }
+        else if($koltuk->id > 120 && $koltuk->id <=180){
+            $ucret= $ucus->ucret+ ($ucus->ucret*0.2);
+        }
+        else if($koltuk->id > 180 && $koltuk->id <=216){
+            $ucret= $ucus->ucret- ($ucus->ucret*0.2);
+        }
+        else if($koltuk->id > 252 && $koltuk->id <=288){
+            $ucret= $ucus->ucret+ ($ucus->ucret*0.2);
+        }
+        else if($koltuk->id > 288 && $koltuk->id <=312){
+            $ucret= $ucus->ucret- ($ucus->ucret*0.2);
+        }
+        else if($koltuk->id > 336 && $koltuk->id <=350){
+            $ucret= $ucus->ucret+ ($ucus->ucret*0.2);
+        }
         return view('Yolcu/Kesinlestir', [
-            'ucus' => $ucus_id,
-            'koltuk' => $koltuk_id
+            'ucus' => $ucus,
+            'koltuk' => $koltuk,
+            'sefer'=> $sefer,
+            'ucret'=>$ucret
         ]);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    register
@@ -102,34 +126,34 @@ class UcusController extends Controller
         ])->with('success', 'Registration successful!');
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    Biletlerim
-    public function Biletlerim($ucus_id , $koltuk_id , $user_id)
+    public function Biletlerim($ucus_id, $koltuk_id, $user_id)
     {
 
 
-            error_log('user' . $user_id . " ucus" . $ucus_id . " koltuk " . $koltuk_id);
+        error_log('user' . $user_id . " ucus" . $ucus_id . " koltuk " . $koltuk_id);
 
-            // Check if the bilet already exists
-            $existingBilet = Bilet::where('ucus_id', $ucus_id)
-                ->where('koltuk_id', $koltuk_id)
-                ->where('yolcu_id', $user_id)
-                ->first();
+        // Check if the bilet already exists
+        $existingBilet = Bilet::where('ucus_id', $ucus_id)
+            ->where('koltuk_id', $koltuk_id)
+            ->where('yolcu_id', $user_id)
+            ->first();
 
-            if (!$existingBilet) {
-                // If no existing bilet, create a new one
-                $sayi = $user_id * 133 * $ucus_id * $koltuk_id;
-                $bilet = new Bilet();
-                $bilet->biletno = "TK{$sayi}";
-                $bilet->yolcu_id = $user_id;
-                $bilet->ucus_id = $ucus_id;
-                $bilet->koltuk_id = $koltuk_id;
-                $bilet->save();
-            } else {
+        if (!$existingBilet) {
+            // If no existing bilet, create a new one
+            $sayi = $user_id * 133 * $ucus_id * $koltuk_id;
+            $bilet = new Bilet();
+            $bilet->biletno = "TK{$sayi}";
+            $bilet->yolcu_id = $user_id;
+            $bilet->ucus_id = $ucus_id;
+            $bilet->koltuk_id = $koltuk_id;
+            $bilet->save();
+        } else {
 
-                $bilet = $existingBilet;
-            }
-            $biletler = Bilet::where('yolcu_id', $user_id)->get();
-            return view('Yolcu/Biletlerim', ['user_id' => $user_id, 'ucus_id' => $ucus_id, 'koltuk_id' => $koltuk_id, 'biletler' => $biletler]);
-
+            $bilet = $existingBilet;
+        }
+        $yolcu=User::findOrFail($user_id);
+        $biletler = Bilet::where('yolcu_id', $user_id)->get();
+        return view('Yolcu/Biletlerim', ['user_id' => $user_id, 'ucus_id' => $ucus_id, 'koltuk_id' => $koltuk_id, 'biletler' => $biletler ,'yolcu'=>$yolcu]);
     }
 
 
@@ -260,7 +284,8 @@ class UcusController extends Controller
         return view('Ucus.show', ['ucus' => Ucus::findOrFail($id)]);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public function Sorgula(Request $request){
+    public function Sorgula(Request $request)
+    {
         $request->validate([
             'biletno' => 'required',
             'adi' => 'required',
@@ -276,9 +301,9 @@ class UcusController extends Controller
         $bilet = Bilet::where('biletno', $biletno)->first();
 
 
-        if($user && $bilet) {
+        if ($user && $bilet) {
 
-            if($bilet->yolcu_id == $user->id){
+            if ($bilet->yolcu_id == $user->id) {
                 return redirect()->route('Ucus.Bilet', [
                     'biletno' => $biletno,
                     'bilet_id' => $bilet->id,

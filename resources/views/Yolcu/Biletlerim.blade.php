@@ -2,7 +2,7 @@
 @section('content')
 <h1>Biletlerim</h1>
 
-<h2>Yolcu: {{ $user_id }}</h2>
+<h2>Yolcu: {{ $yolcu->name }}</h2>
 
 @foreach ($biletler as $bilet)
 

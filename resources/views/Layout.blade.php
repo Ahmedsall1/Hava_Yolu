@@ -9,6 +9,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/prism.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/theme.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/user.css') }}" rel="stylesheet" />
 
     @yield('styles')
 </head>
@@ -50,6 +54,8 @@
     </div>
     <div class="centerr">
     @yield('content')</div>
+
+    
 </body>
 
 </html>

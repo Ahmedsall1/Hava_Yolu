@@ -27,8 +27,8 @@
             </div>
 
             <div class="form-group">
-                <label for="sefer-nereye" >
-                    <img class="icon" width="50" height="50" src="{{asset('images\inis.png')}}" alt="">Nereye : </label>
+                <label class="sefer-nereye" for="sefer-nereye"  >
+                    <img  class="icon" width="50" height="50" src="{{asset('images\inis.png')}}" alt="">Nereye : </label>
                 <select class="form-control" id="sefer-nereye" name="sefer-nereye" required style="color: #005096;">
                     @foreach($airports as $airport)
                     <option value="{{ $airport }}">{{ $airport }}</option>
