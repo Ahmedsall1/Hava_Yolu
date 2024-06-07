@@ -9,10 +9,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/prism.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/theme.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/user.css') }}" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     @yield('styles')
 </head>
@@ -34,15 +32,6 @@
 
             <a href="{{Route('Sirket.index')}}">Sirketler</a>
 
-            @if(session()->has('user'))
-            <span>{{ session('user')->name }}</span>
-            <form action="{{ Route('Giris') }}" method="POST">
-                @csrf
-                <button type="submit">{{ __('Giris') }}</button>
-            </form>
-        @else
-            <a href="{{ Route('Giris') }}">{{ __('Giris ') }}</a>
-        @endif
         <div>
             <form action="{{ route('Sefer.search') }}" method="GET">
                 <input type="text" name="query" placeholder="Search Sefer..." required>
@@ -55,7 +44,7 @@
     <div class="centerr">
     @yield('content')</div>
 
-    
+
 </body>
 
 </html>

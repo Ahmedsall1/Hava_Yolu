@@ -50,9 +50,9 @@ class UcusController extends Controller
 
         $koltukIds = DB::table($ucaktipiTable)->pluck('koltuk_id')->toArray();
 
-        $availableKoltukIds = array_diff($koltukIds, $biletler);
 
-        $bosKoltuklar = Koltuk::whereIn('id', $availableKoltukIds)->get();
+
+        $bosKoltuklar = Koltuk::whereIn('id', $koltukIds)->get();
 
         return view('Yolcu/KoltukSec', [
             'ucus' => $ucuses,
@@ -171,13 +171,17 @@ class UcusController extends Controller
         $ucus = Ucus::findOrFail($bilet->ucus_id);
         $koltuk = Koltuk::findOrFail($bilet->koltuk_id);
         $yolcu = User::findOrFail($bilet->yolcu_id);
-
+        $sefer =Sefer::findOrFail($ucus->sefer_id);
+        $ucak =Ucak::findOrFail($ucus->ucak_id);
+        $sirket =Sirket::findOrFail($ucak->sirket_id);
         // Return the view with the retrieved data
         return view('Yolcu/Bilet', [
             'yolcu' => $yolcu,
             'koltuk' => $koltuk,
             'ucus' => $ucus,
-            'bilet' => $bilet
+            'bilet' => $bilet,
+            'sefer'=>$sefer,
+            'sirket' => $sirket,
         ]);
     }
 
@@ -248,11 +252,16 @@ class UcusController extends Controller
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function create()
+    public static function create($sefer_id=9031)
     {
-        $Seferler = Sefer::paginate(15);
+
         $ucaklar = Ucak::all();
-        return view('ucus.create', compact('Seferler', 'ucaklar'));
+        // if($sefer_id ==null){
+        //     $sefer_id =9031;
+        // }
+
+        $airports =SeferController::$AirPorts;
+        return view('Ucus.create', compact( 'ucaklar','sefer_id','airports'));
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

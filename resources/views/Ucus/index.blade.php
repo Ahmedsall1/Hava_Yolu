@@ -19,7 +19,7 @@
 
         @endforeach
     </ul>
-    <a href="{{route('Ucus.create')}}">Ucus Ekle</a>
+    <a href="{{route('Ucus.create',['sefer_id'=>9031])}}">Ucus Ekle</a>
 </div>
 @endsection
 

@@ -3,6 +3,7 @@
 
 <div id="loginForm">
     <h1>Giriş yap</h1>
+    <img class="" width="150" height="150" src="{{asset('images\Yolcu.png')}}" alt="">
     <form action="{{ route('User.login') }}" method="POST">
         @csrf
         <div class="container">
@@ -23,7 +24,5 @@
 
 
 @endsection
-
-
 
 @section('title','Giris')

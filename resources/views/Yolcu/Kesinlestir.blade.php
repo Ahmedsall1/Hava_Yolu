@@ -10,8 +10,14 @@
 
     @if ($ucus)
         <div class="container" style=" color:rgb(253, 222, 85, 1);">
+            <i class="fa-solid fa-plane-departure"></i>
+            <h3>Nerden: {{ $sefer->nerden }}  <i class="fa-regular fa-calendar-days"></i>Tarih: {{ $sefer->tarih }}</h3>
 
-            <h3>Nerden: {{ $sefer->nerden }} Nereye: {{ $sefer->nereye }} Tarih: {{ $sefer->tarih }}</h3>
+
+        </div>
+        <div class="container" style=" color:rgb(253, 222, 85, 1);">
+            <i class="fa-solid fa-plane-arrival"></i>
+            <h3> Nereye: {{ $sefer->nereye }} </h3>
 
 
         </div>
@@ -26,6 +32,7 @@
 
 
     <div class="container">
+        <img class="" width="50" height="50" src="{{asset('images\Yolcu.png')}}" alt="">
         <button id="loginBtn" class="btn btn-primary mr-2">Login</button>
         <button id="registerBtn" class="btn btn-primary">Register</button>
     </div>

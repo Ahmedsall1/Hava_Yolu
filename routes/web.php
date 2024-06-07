@@ -83,6 +83,8 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 
 Route::get('Sefer/search', [SeferController::class, 'search'])->name('Sefer.search');
+
+Route::post('/sefer-sorgula', [SeferController::class, 'Sorgula'])->name('Sefer.Sorgula');
 //          MVC
 
 // Model -> data

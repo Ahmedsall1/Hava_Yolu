@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\UcusController;
 use App\Models\Sefer;
+use App\Models\Ucak;
 use Illuminate\Http\Request;
 
 class SeferController extends Controller
@@ -188,5 +190,32 @@ class SeferController extends Controller
 
         return view('Sefer.results', compact('sefers', 'query'));
     }
-    
+    public function Sorgula(Request $request)
+    {
+        $request->validate([
+            'sefer-nerden' => 'required',
+            'sefer-nereye' => 'required',
+            'sefer-tarih' => 'required',
+        ]);
+
+        $nerden = strip_tags($request->input('sefer-nerden'));
+        $nereye = strip_tags($request->input('sefer-nereye'));
+        $tarih = strip_tags($request->input('sefer-tarih'));
+
+        $sefer = [
+            'nerden' => $nerden,
+            'nereye' => $nereye,
+            'tarih' => $tarih
+        ];
+        $sefer1 = Sefer::where('nerden', $nerden)
+            ->where('nereye', $nereye)
+            ->where('tarih', $tarih)
+            ->firstOrFail();
+
+        $sefer_id = $sefer1->id;
+
+        return UcusController::create($sefer_id);
+
+    }
+
 }

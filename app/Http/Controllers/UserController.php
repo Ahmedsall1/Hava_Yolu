@@ -130,6 +130,7 @@ class UserController extends Controller
     public function Biletlerim($user_id)
     {
             $biletler = Bilet::where('yolcu_id', $user_id)->get();
-            return view('Yolcu/Biletlerim', ['user_id' => $user_id, 'biletler' => $biletler]);
+            $yolcu = User::findOrFail($user_id);
+            return view('Yolcu/Biletlerim', ['user_id' => $user_id, 'biletler' => $biletler, 'yolcu' => $yolcu]);
     }
 }

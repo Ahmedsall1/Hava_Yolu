@@ -7,11 +7,11 @@
         <img class="soora" style="color: #005096;" src="{{asset('images\logo.png')}}" alt="">
 
         <div>
-            
+
             <div class="form-group">
 
                 <label for="sefer-nerden">
-                    <img class="icon" width="50" height="50" src="{{asset('images\Ucus.png')}}" alt=""> Nerden : </label>
+                     Nerden </label>
                 <select class="form-control" id="sefer-nerden" name="sefer-nerden" required style="color: #005096;">
                     @foreach($airports as $airport)
                     <option value="{{ $airport }}">{{ $airport }}</option>
@@ -21,8 +21,8 @@
 
             <div class="form-group">
                 <label for="sefer-nereye">
-                    <img class="icon" width="50" height="50" src="{{asset('images\inis.png')}}" alt="">
-                    Nereye : </label>
+
+                    Nereye </label>
 
                 <select class="form-control" id="sefer-nereye" name="sefer-nereye" required style="color: #005096;">
                     @foreach($airports as $airport)
@@ -35,12 +35,12 @@
 
 
             <div class="form-group">
-                <label for="sefer-tarih">Tarih : </label>
+                <label for="sefer-tarih">Tarih </label>
                 <input type="date" class="form-control" id="sefer-tarih" name="sefer-tarih" value="{{old('sefer-tarih')}}" style="color: #005096;" required>
             </div>
 
 
-            <button type="submit" class="submit">Sefer Bul</button>
+            <button type="submit" class="ana-submit">Sefer Bul</button>
         </div>
     </div>
 </form>

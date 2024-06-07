@@ -31,7 +31,7 @@
         <div class="seferContainer">
             <table class="table">
                 <thead style=" color:rgb(253, 222, 85, 1);">
-                    
+
                     <tr>
                         <td style="color: rgb(255, 255, 255)">Tarih: {{ $sefer['tarih'] }}</td>
                         <td>Nerden :{{ $sefer['nerden'] }} -> Nereye:{{ $sefer['nereye'] }}</td>
@@ -46,6 +46,7 @@
                         <th>Saat</th>
                         <th>Süre</th>
                         <th>Ücret</th>
+                        <th>Seç</th>
                     </tr>
                 </thead>
                 <tbody style=" color:rgb(255, 255, 255);">
