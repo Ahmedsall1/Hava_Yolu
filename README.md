@@ -20,6 +20,9 @@
 
 <img src="https://github.com/Ahmedsall1/HavaYolu-Bilgi-Sistemi-/blob/main/foto/Screenshot%202024-04-03%20100708.png" >
 
+<h2>Database diagram </h2>
+<img src="https://github.com/Ahmedsall1/Hava_Yolu/blob/main/Hava_Yolu.png">
+
 
 
 
