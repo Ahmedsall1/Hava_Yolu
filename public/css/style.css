@@ -3,7 +3,11 @@
     padding: 0;
     font-family: "Times New Roman";
   }
-
+  body{
+    /* background-color: #EAE7E7; */
+    background-color: #DDD;
+    /* background-color: #F9F8EB; */
+  }
 
   .navbar {
     display: flex;
@@ -103,9 +107,7 @@ label{
 
 }
 
-.sefer-nereye{
 
-}
 .seferContainer{
     display: flex;
     justify-content: center;
@@ -116,12 +118,7 @@ label{
 table{
     border-collapse: collapse;
 }
-tbody
-{
 
-
-
-}
 
 td
 {

@@ -58,7 +58,7 @@ class UcusController extends Controller
             'ucus' => $ucuses,
             'ucakKoltuklari' => $bosKoltuklar,
             'harf' => $harf,
-            'dolukoltuk'=>$biletler
+            'dolukoltuk' => $biletler
         ]);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    Kesinlestir
@@ -66,65 +66,60 @@ class UcusController extends Controller
     {
         $ucus = Ucus::findOrFail($ucus_id);
         $koltuk = Koltuk::findOrFail($koltuk_id);
-        $sefer= Sefer::findOrFail($ucus->sefer_id);
+        $sefer = Sefer::findOrFail($ucus->sefer_id);
         $ucret = $ucus->ucret;
         if ($koltuk->id <= 60) {
-            $ucret= $ucus->ucret- ($ucus->ucret*0.2);
-        }
-        else if($koltuk->id > 120 && $koltuk->id <=180){
-            $ucret= $ucus->ucret+ ($ucus->ucret*0.2);
-        }
-        else if($koltuk->id > 180 && $koltuk->id <=216){
-            $ucret= $ucus->ucret- ($ucus->ucret*0.2);
-        }
-        else if($koltuk->id > 252 && $koltuk->id <=288){
-            $ucret= $ucus->ucret+ ($ucus->ucret*0.2);
-        }
-        else if($koltuk->id > 288 && $koltuk->id <=312){
-            $ucret= $ucus->ucret- ($ucus->ucret*0.2);
-        }
-        else if($koltuk->id > 336 && $koltuk->id <=350){
-            $ucret= $ucus->ucret+ ($ucus->ucret*0.2);
+            $ucret = $ucus->ucret - ($ucus->ucret * 0.2);
+        } else if ($koltuk->id > 120 && $koltuk->id <= 180) {
+            $ucret = $ucus->ucret + ($ucus->ucret * 0.2);
+        } else if ($koltuk->id > 180 && $koltuk->id <= 216) {
+            $ucret = $ucus->ucret - ($ucus->ucret * 0.2);
+        } else if ($koltuk->id > 252 && $koltuk->id <= 288) {
+            $ucret = $ucus->ucret + ($ucus->ucret * 0.2);
+        } else if ($koltuk->id > 288 && $koltuk->id <= 312) {
+            $ucret = $ucus->ucret - ($ucus->ucret * 0.2);
+        } else if ($koltuk->id > 336 && $koltuk->id <= 350) {
+            $ucret = $ucus->ucret + ($ucus->ucret * 0.2);
         }
         return view('Yolcu/Kesinlestir', [
             'ucus' => $ucus,
             'koltuk' => $koltuk,
-            'sefer'=> $sefer,
-            'ucret'=>$ucret
+            'sefer' => $sefer,
+            'ucret' => $ucret
         ]);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    register
-    public function register(Request $request)
-    {
-        // Validate the request data
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
+    // public function register(Request $request)
+    // {
+    //     // Validate the request data
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|string|email|max:255|unique:users',
+    //         'password' => 'required|string|min:8',
 
-        ]);
+    //     ]);
 
-        // Create the new Yolcu (passenger) record
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => bcrypt($validatedData['password']), // Hash the password
-            'type' => 'Yolcu',
+    //     // Create the new Yolcu (passenger) record
+    //     $user = User::create([
+    //         'name' => $validatedData['name'],
+    //         'email' => $validatedData['email'],
+    //         'password' => bcrypt($validatedData['password']), // Hash the password
+    //         'type' => 'Yolcu',
 
-        ]);
+    //     ]);
 
 
-        // Optionally, you can log in the user after registration
-        auth()->login($user);
+    //     // Optionally, you can log in the user after registration
+    //     auth()->login($user);
 
-        // Redirect the user to a dashboard or any other page
-        return redirect()->route('Yolcu.Biletlerim', [
+    //     // Redirect the user to a dashboard or any other page
+    //     return redirect()->route('Yolcu.Biletlerim', [
 
-            'user_id' => $user->id,
-            'ucus_id' => $request->input('ucus_id'),
-            'koltuk_id' => $request->input('koltuk_id')
-        ])->with('success', 'Registration successful!');
-    }
+    //         'user_id' => $user->id,
+    //         'ucus_id' => $request->input('ucus_id'),
+    //         'koltuk_id' => $request->input('koltuk_id')
+    //     ])->with('success', 'Registration successful!');
+    // }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    Biletlerim
     public function Biletlerim($ucus_id, $koltuk_id, $user_id)
     {
@@ -151,9 +146,21 @@ class UcusController extends Controller
 
             $bilet = $existingBilet;
         }
-        $yolcu=User::findOrFail($user_id);
+        $yolcu = User::findOrFail($user_id);
         $biletler = Bilet::where('yolcu_id', $user_id)->get();
-        return view('Yolcu/Biletlerim', ['user_id' => $user_id, 'ucus_id' => $ucus_id, 'koltuk_id' => $koltuk_id, 'biletler' => $biletler ,'yolcu'=>$yolcu]);
+        $ucus = Ucus::where('id', $biletler->ucus_id)->get();;
+        $sefer = Sefer::where('id',$ucus->sefer_id)->get();
+        $koltuk = Koltuk::where('id',$biletler->koltuk_id)->get();
+        return view('Yolcu/Biletlerim', [
+            'user_id' => $user_id,
+            'ucus_id' => $ucus_id,
+            'koltuk_id' => $koltuk_id,
+            'biletler' => $biletler,
+            'yolcu' => $yolcu,
+            'sefer' => $sefer,
+            'koltuk' => $koltuk,
+            'ucus' => $ucus
+        ]);
     }
 
 
@@ -171,16 +178,16 @@ class UcusController extends Controller
         $ucus = Ucus::findOrFail($bilet->ucus_id);
         $koltuk = Koltuk::findOrFail($bilet->koltuk_id);
         $yolcu = User::findOrFail($bilet->yolcu_id);
-        $sefer =Sefer::findOrFail($ucus->sefer_id);
-        $ucak =Ucak::findOrFail($ucus->ucak_id);
-        $sirket =Sirket::findOrFail($ucak->sirket_id);
+        $sefer = Sefer::findOrFail($ucus->sefer_id);
+        $ucak = Ucak::findOrFail($ucus->ucak_id);
+        $sirket = Sirket::findOrFail($ucak->sirket_id);
         // Return the view with the retrieved data
         return view('Yolcu/Bilet', [
             'yolcu' => $yolcu,
             'koltuk' => $koltuk,
             'ucus' => $ucus,
             'bilet' => $bilet,
-            'sefer'=>$sefer,
+            'sefer' => $sefer,
             'sirket' => $sirket,
         ]);
     }
@@ -252,7 +259,7 @@ class UcusController extends Controller
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static function create($sefer_id=9031)
+    public static function create($sefer_id = 9031)
     {
 
         $ucaklar = Ucak::all();
@@ -260,8 +267,8 @@ class UcusController extends Controller
         //     $sefer_id =9031;
         // }
 
-        $airports =SeferController::$AirPorts;
-        return view('Ucus.create', compact( 'ucaklar','sefer_id','airports'));
+        $airports = SeferController::$AirPorts;
+        return view('Ucus.create', compact('ucaklar', 'sefer_id', 'airports'));
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

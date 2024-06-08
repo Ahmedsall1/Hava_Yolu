@@ -2,7 +2,7 @@
 @extends('Layout')
 
 @section('styles')
-    
+
 @endsection
 @section('content')
 
@@ -20,7 +20,7 @@
             <div class="form-group">
 
                 <label for="sefer-nerden" >
-                    <i class="fa-solid fa-plane-departure"></i> Nerden </label>
+                    <i class="fa-solid fa-plane-departure"></i> Nereden </label>
                 <select class="form-control" id="sefer-nerden" name="sefer-nerden" required style="color: #005096;">
                     @foreach($airports as $airport)
                     <option value="{{ $airport }}">{{ $airport }}</option>
@@ -48,7 +48,7 @@
             </div>
 
 
-            <button type="submit" class="submit" style="color: #005096;">Sefer Bul</button>
+            <button type="submit" class="submit" style="color: #005096;"> Sefer Bul <i class="fa-solid fa-magnifying-glass"></i></button>
 
     </div>
 

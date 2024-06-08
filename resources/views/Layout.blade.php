@@ -9,7 +9,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     @yield('styles')
@@ -19,7 +19,7 @@
     <div>
 
         <nav class="navbar">
-            <img width="300" height="60" src="{{asset('images\LeftLogo.png')}}" alt="">
+            <img width="60" height="60" src="{{asset('images\logo_.png')}}" alt="">
             <a href="{{Route('index')}}">AnaSayfa</a>
             <a href="{{Route('SeferBul')}}">SeferBul</a>
             <a href="{{Route('about')}}">About</a>

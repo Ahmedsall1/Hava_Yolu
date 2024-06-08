@@ -11,7 +11,7 @@
             <div class="form-group">
 
                 <label for="sefer-nerden">
-                     Nerden </label>
+                    <i class="fa-solid fa-plane-departure"></i>  Nereden </label>
                 <select class="form-control" id="sefer-nerden" name="sefer-nerden" required style="color: #005096;">
                     @foreach($airports as $airport)
                     <option value="{{ $airport }}">{{ $airport }}</option>
@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label for="sefer-nereye">
 
-                    Nereye </label>
+                    <i class="fa-solid fa-plane-arrival"></i>Nereye </label>
 
                 <select class="form-control" id="sefer-nereye" name="sefer-nereye" required style="color: #005096;">
                     @foreach($airports as $airport)
@@ -35,12 +35,12 @@
 
 
             <div class="form-group">
-                <label for="sefer-tarih">Tarih </label>
+                <label for="sefer-tarih"><i class="fa-regular fa-calendar-days"></i>Tarih </label>
                 <input type="date" class="form-control" id="sefer-tarih" name="sefer-tarih" value="{{old('sefer-tarih')}}" style="color: #005096;" required>
             </div>
 
 
-            <button type="submit" class="ana-submit">Sefer Bul</button>
+            <button type="submit" class="ana-submit"><i class="fa-solid fa-magnifying-glass"></i> Sefer Bul</button>
         </div>
     </div>
 </form>

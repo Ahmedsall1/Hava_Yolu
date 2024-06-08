@@ -6,16 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Bilet;
+use App\Models\Ucus;
+use App\Models\Sefer;
+use App\Models\Koltuk;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public static $tip =array("Personel","Yolcu","Yonetici","Pilot","Hostese");
+    public static $tip = array("Personel", "Yolcu", "Yonetici", "Pilot", "Hostese");
 
     public function index()
     {
-        return view('User.index', ['Users' => User::all()]);
+        return view('dashboard');
     }
 
     /**
@@ -88,7 +91,7 @@ class UserController extends Controller
         $User->type = strip_tags($request->input('User-tipi'));
         $User->name = strip_tags($request->input('User-name'));
         $User->email = strip_tags($request->input('User-email'));
- // Hash the password
+        // Hash the password
 
         // Save the user to the database
         $User->save();
@@ -129,8 +132,33 @@ class UserController extends Controller
     }
     public function Biletlerim($user_id)
     {
-            $biletler = Bilet::where('yolcu_id', $user_id)->get();
-            $yolcu = User::findOrFail($user_id);
-            return view('Yolcu/Biletlerim', ['user_id' => $user_id, 'biletler' => $biletler, 'yolcu' => $yolcu]);
+        $yolcu = User::findOrFail($user_id);
+        $biletler = Bilet::where('yolcu_id', $user_id)->get();
+
+        // Initialize empty arrays to store related data
+        $ucusler = [];
+        $seferler = [];
+        $koltuklar = [];
+
+        // Loop through each Bilet to fetch related Ucus, Sefer, and Koltuk
+        foreach ($biletler as $bilet) {
+            $ucus = Ucus::find($bilet->ucus_id);
+            $sefer = Sefer::find($ucus->sefer_id);
+            $koltuk = Koltuk::find($bilet->koltuk_id);
+
+            // Add the related data to arrays
+            $ucusler[] = $ucus;
+            $seferler[] = $sefer;
+            $koltuklar[] = $koltuk;
+        }
+
+        return view('Yolcu/Biletlerim', [
+            'user_id' => $user_id,
+            'biletler' => $biletler,
+            'yolcu' => $yolcu,
+            'seferler' => $seferler,
+            'koltuklar' => $koltuklar,
+            'ucusler' => $ucusler
+        ]);
     }
 }
