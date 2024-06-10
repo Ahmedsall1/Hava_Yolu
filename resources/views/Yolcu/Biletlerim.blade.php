@@ -10,7 +10,7 @@
     @endphp
     <div class="container-1">
 
-        <h1 class="upcomming">{{ $yolcu->name }} Biletleri</h1>
+        <h1 class="upcomming"> Biletleriniz</h1>
         @foreach ($biletler as $bilet)
             <div class="item">
                 <div class="item-right">
@@ -37,7 +37,7 @@
                     <div class="sce">
 
 
-                        <p><i class="fa-regular fa-calendar-days" style="color:orange"></i> {{ $seferler[$i]->tarih }} |
+                        <p><i class="fa-regular fa-calendar-days" style="color:black"></i> {{ $seferler[$i]->tarih }} |
                             bilet.ID:{{ $bilet->biletno }}</p><br />
                         <div class="fix"></div>
                         <p> <i class="fa-solid fa-clock" style="color:orange"></i> saati:{{ $ucusler[$i]->saat }} |
@@ -54,8 +54,8 @@
                     </div>
                     <div class="fix"></div><a
                         href="{{ route('Ucus.Bilet', ['biletno' => $bilet['biletno'], 'bilet_id' => $bilet['id']]) }}">
-                        <button class="booked">Yazdır</button></a>
-                
+                        <button class="booked" >Yazdır</button></a>
+
 
     </div> <!-- end item -->
 

@@ -89,37 +89,37 @@ class UcusController extends Controller
         ]);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    register
-    // public function register(Request $request)
-    // {
-    //     // Validate the request data
-    //     $validatedData = $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255|unique:users',
-    //         'password' => 'required|string|min:8',
+    public function register(Request $request)
+    {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
 
-    //     ]);
+        ]);
 
-    //     // Create the new Yolcu (passenger) record
-    //     $user = User::create([
-    //         'name' => $validatedData['name'],
-    //         'email' => $validatedData['email'],
-    //         'password' => bcrypt($validatedData['password']), // Hash the password
-    //         'type' => 'Yolcu',
+        // Create the new Yolcu (passenger) record
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => bcrypt($validatedData['password']), // Hash the password
+            'type' => 'Yolcu',
 
-    //     ]);
+        ]);
 
 
-    //     // Optionally, you can log in the user after registration
-    //     auth()->login($user);
+        // Optionally, you can log in the user after registration
+        auth()->login($user);
 
-    //     // Redirect the user to a dashboard or any other page
-    //     return redirect()->route('Yolcu.Biletlerim', [
+        // Redirect the user to a dashboard or any other page
+        return redirect()->route('Yolcu.Biletlerim', [
 
-    //         'user_id' => $user->id,
-    //         'ucus_id' => $request->input('ucus_id'),
-    //         'koltuk_id' => $request->input('koltuk_id')
-    //     ])->with('success', 'Registration successful!');
-    // }
+            'user_id' => $user->id,
+            'ucus_id' => $request->input('ucus_id'),
+            'koltuk_id' => $request->input('koltuk_id')
+        ])->with('success', 'Registration successful!');
+    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    Biletlerim
     public function Biletlerim($ucus_id, $koltuk_id, $user_id)
     {
@@ -148,18 +148,29 @@ class UcusController extends Controller
         }
         $yolcu = User::findOrFail($user_id);
         $biletler = Bilet::where('yolcu_id', $user_id)->get();
-        $ucus = Ucus::where('id', $biletler->ucus_id)->get();;
-        $sefer = Sefer::where('id',$ucus->sefer_id)->get();
-        $koltuk = Koltuk::where('id',$biletler->koltuk_id)->get();
+        $ucusler = [];
+        $seferler = [];
+        $koltuklar = [];
+
+        // Loop through each Bilet to fetch related Ucus, Sefer, and Koltuk
+        foreach ($biletler as $bilet) {
+            $ucus = Ucus::find($bilet->ucus_id);
+            $sefer = Sefer::find($ucus->sefer_id);
+            $koltuk = Koltuk::find($bilet->koltuk_id);
+
+            // Add the related data to arrays
+            $ucusler[] = $ucus;
+            $seferler[] = $sefer;
+            $koltuklar[] = $koltuk;
+        }
+
         return view('Yolcu/Biletlerim', [
             'user_id' => $user_id,
-            'ucus_id' => $ucus_id,
-            'koltuk_id' => $koltuk_id,
             'biletler' => $biletler,
             'yolcu' => $yolcu,
-            'sefer' => $sefer,
-            'koltuk' => $koltuk,
-            'ucus' => $ucus
+            'seferler' => $seferler,
+            'koltuklar' => $koltuklar,
+            'ucusler' => $ucusler
         ]);
     }
 

@@ -29,7 +29,7 @@
             <h3>koltuk: {{ $koltuk->no }} Koltuk tipi: {{ $koltuk->tipi }} Koltuk Ucreti: {{ $ucret }}</h3>
         </div>
     @endif
-
+        
 
     <div class="container">
         <img class="" width="50" height="50" src="{{asset('images\Yolcu.png')}}" alt="">

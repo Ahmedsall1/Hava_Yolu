@@ -50,11 +50,11 @@ Route::post('Yolcu/UcusSec', [UcusController::class, 'find'])->name('Ucus.find')
 Route::get('Yolcu/KoltukSec/{id}', [UcusController::class, 'KoltukSec'])->name('Ucus.KoltukSec');
 Route::get('Yolcu/Kesinlestir/{ucus_id}/{koltuk_id}', [UcusController::class, 'Kesinlestir'])->name('Ucus.Kesinlestir');
 
-// Route::post('Yolcu/Biletlerim/register/{user_id}', [UcusController::class, 'register'])->name('Ucus.register');
-// Route::post('Yolcu/Biletlerim/login', [UcusController::class, 'login'])->name('Ucus.login');
+Route::post('Yolcu/Biletlerim/register-yolcu/{user_id}', [UcusController::class, 'register'])->name('Ucus.register');
+Route::post('Yolcu/Biletlerim/login-yolcu', [UcusController::class, 'login'])->name('Ucus.login');
 
 
-// Route::post('/register-yolcu', [UcusController::class, 'register'])->name('Ucus.register');
+Route::post('/register-yolcu', [UcusController::class, 'register'])->name('Ucus.register');
 Route::get('/Yolcu/Biletlerim/{ucus_id}/{koltuk_id}/{user_id}', [UcusController::class, 'Biletlerim'])->name('Yolcu.Biletlerim');
 
 Route::get('/Yolcu/Bilet/{biletno}/{bilet_id}', [UcusController::class, 'Bilet'])->name('Ucus.Bilet');
@@ -63,7 +63,7 @@ Route::get('/Yolcu/Bilet/{biletno}/{bilet_id}', [UcusController::class, 'Bilet']
 Route::post('/Sorgula', [UcusController::class, 'Sorgula'])->name('Ucus.Sorgula');
 
 
-// Route::post('/login-yolcu', [UcusController::class, 'login'])->name('Ucus.login');
+Route::post('/login-yolcu', [UcusController::class, 'login'])->name('Ucus.login');
 
 
 
