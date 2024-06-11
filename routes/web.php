@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 // Route::get('/', function () {
@@ -38,12 +38,12 @@ require __DIR__.'/auth.php';
 // Route::get('/Giris', function () {
 //     return view('Giris');
 // });
-Route::get('/index',[StaticController::class,'index'])->name('index');
-Route::get('/about',[StaticController::class,'about'])->name('about');
-Route::get('/Giris',[StaticController::class,'Giris'])->name('Giris');
-Route::get('/Sorgula',[StaticController::class,'Sorgula'])->name('Sorgula');
+Route::get('/index', [StaticController::class, 'index'])->name('index');
+Route::get('/about', [StaticController::class, 'about'])->name('about');
+Route::get('/Giris', [StaticController::class, 'Giris'])->name('Giris');
+Route::get('/Sorgula', [StaticController::class, 'Sorgula'])->name('Sorgula');
 
-Route::get('Yolcu/SeferBul',[StaticController::class,'SeferBul'])->name('SeferBul');
+Route::get('Yolcu/SeferBul', [StaticController::class, 'SeferBul'])->name('SeferBul');
 
 Route::post('Yolcu/UcusSec', [UcusController::class, 'find'])->name('Ucus.find');
 
@@ -55,7 +55,7 @@ Route::post('Yolcu/Biletlerim/login-yolcu', [UcusController::class, 'login'])->n
 
 
 Route::post('/register-yolcu', [UcusController::class, 'register'])->name('Ucus.register');
-Route::get('/Yolcu/Biletlerim/{ucus_id}/{koltuk_id}/{user_id}', [UcusController::class, 'Biletlerim'])->name('Yolcu.Biletlerim');
+
 
 Route::get('/Yolcu/Bilet/{biletno}/{bilet_id}', [UcusController::class, 'Bilet'])->name('Ucus.Bilet');
 
@@ -72,36 +72,39 @@ Route::post('/login-yolcu', [UcusController::class, 'login'])->name('Ucus.login'
 
 // Route::get('/Ucus/Ucussec', [UcusController::class, 'UcusSec'])->name('Ucus.UcusSec');
 
-Route::resource('Sefer',SeferController::class);
-Route::resource('Ucus',UcusController::class);
-Route::resource('User',UserController::class);
-Route::resource('Ucak',UcakController::class);
-Route::resource('User',UserController::class);
-Route::resource('Sirket',SirketController::class);
 
 // Yolcu routes
-Route::middleware(['auth','YolcuMiddleware'])->group(function(){
-    Route::get('/yolcu/dashboard',[UserController::class,'index'])->name('dashboard');
-
+Route::middleware(['auth', 'YolcuMiddleware'])->group(function () {
+    Route::get('/yolcu/dashboard', [UserController::class, 'index'])->name('dashboard');
+    Route::get('/Yolcu/Biletlerim/{ucus_id}/{koltuk_id}/{user_id}', [UcusController::class, 'Biletlerim'])->name('Yolcu.Biletlerim');
+    Route::get('/Biletlerim/{user_id}', [UserController::class, 'Biletlerim'])->name('User.Biletlerim');    
 });
 
 // admin
-Route::middleware(['auth','AdminMiddleware'])->group(function(){
-    Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+Route::middleware(['auth', 'AdminMiddleware'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
+
+    Route::resource('/admin/Sefer', SeferController::class);
+    Route::resource('/admin/User', UserController::class);
+    Route::resource('/admin/Ucus', UcusController::class);
+
+    Route::resource('/admin/Ucak', UcakController::class);
+
+    Route::resource('/admin/Sirket', SirketController::class);
 });
 
 
 Route::post('/Yolcu/Giris', [UserController::class, 'login'])->name('User.login');
-Route::get('/Biletlerim/{user_id}', [UserController::class, 'Biletlerim'])->name('User.Biletlerim');
+
 
 
 
 
 Route::get('/Tr', function () {
-    $filter= request('style');
-    if(isset($filter)) {
-        return 'You Style is '.$filter;
+    $filter = request('style');
+    if (isset($filter)) {
+        return 'You Style is ' . $filter;
     }
     return 'No Style';
 });

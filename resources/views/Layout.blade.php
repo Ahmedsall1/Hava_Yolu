@@ -24,21 +24,16 @@
             <a href="{{Route('index')}}">AnaSayfa</a>
             <a href="{{Route('SeferBul')}}">Sefer Bul</a>
             <a href="{{Route('about')}}">Hakkında </a>
-            <a href="{{Route('Giris')}}">Giriş</a>
+
             <a href="{{Route('Sorgula')}}">Sorgula</a>
-            <a href="{{Route('Sefer.index')}}">Seferler</a>
-            <a href="{{Route('Ucus.index')}}">Ucusler</a>
 
-            <a href="{{Route('Ucak.index')}}">Ucaklar</a>
-
-
-
-            <a href="{{Route('Sirket.index')}}">Sirketler</a>
             @if(Auth::user()!=null)
             <a href="{{ route('User.Biletlerim', ['user_id' => Auth::user()->id]) }}">Biletlerim</a>
             <a href="{{ Auth::user()->type=='admin' ? route('admin.dashboard') : route('dashboard')  }}">{{Auth::user()->name}}</a>
+
             @else
             <a href="{{route('login')}} ">Giriş</a>
+            <a href="{{Route('Giris')}}">Giriş</a>
             @endif
 
 

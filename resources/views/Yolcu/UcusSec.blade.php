@@ -8,7 +8,7 @@
     @endif
 
     @if ($sefer)
-        <div class="container">
+        {{-- <div class="container">
 
 
             <div>
@@ -21,7 +21,7 @@
                     <h3></h3>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
 

@@ -29,13 +29,25 @@
             <h3>koltuk: {{ $koltuk->no }} Koltuk tipi: {{ $koltuk->tipi }} Koltuk Ucreti: {{ $ucret }}</h3>
         </div>
     @endif
-        
 
+    @if(Auth::user()==null)
     <div class="container">
         <img class="" width="50" height="50" src="{{asset('images\Yolcu.png')}}" alt="">
         <button id="loginBtn" class="btn btn-primary mr-2">Login</button>
         <button id="registerBtn" class="btn btn-primary">Register</button>
     </div>
+    @else
+    <form action="{{ route('Yolcu.Biletlerim',['user_id' => Auth::user()->id,
+                'ucus_id' => $ucus->id,
+                'koltuk_id' => $koltuk->id]) }}" method="GET">
+        @csrf
+        <input type="hidden" name="ucus_id" value="{{ $ucus->id }}">
+        <input type="hidden" name="koltuk_id" value="{{ $koltuk->id }}">
+        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+
+        <button type="submit" class="btn btn-primary">Kesinlestir</button>
+            </form>
+    @endif
 
     <!-- Login Form -->
     <div class="container">
