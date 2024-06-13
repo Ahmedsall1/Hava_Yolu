@@ -9,13 +9,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UcakController;
 use App\Http\Controllers\SirketController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PersonelController;
 
 use App\Http\Controllers\ProfileController;
 
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('AnaSayfa');
 });
 
 
@@ -72,12 +73,18 @@ Route::post('/login-yolcu', [UcusController::class, 'login'])->name('Ucus.login'
 
 // Route::get('/Ucus/Ucussec', [UcusController::class, 'UcusSec'])->name('Ucus.UcusSec');
 
-
 // Yolcu routes
 Route::middleware(['auth', 'YolcuMiddleware'])->group(function () {
     Route::get('/yolcu/dashboard', [UserController::class, 'index'])->name('dashboard');
     Route::get('/Yolcu/Biletlerim/{ucus_id}/{koltuk_id}/{user_id}', [UcusController::class, 'Biletlerim'])->name('Yolcu.Biletlerim');
-    Route::get('/Biletlerim/{user_id}', [UserController::class, 'Biletlerim'])->name('User.Biletlerim');    
+    Route::get('/Biletlerim/{user_id}', [UserController::class, 'Biletlerim'])->name('User.Biletlerim');
+    });
+
+    Route::get('/{user_type}/{user_name}/{id}/Gurevler', [PersonelController::class, 'index'])->name('Personel.index');
+    Route::get('/yolcu/dashboard', [UserController::class, 'index'])->name('dashboard');
+Route::middleware(['auth', 'PersonelMiddleware'])->group(function () {
+
+
 });
 
 // admin

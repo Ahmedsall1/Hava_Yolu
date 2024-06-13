@@ -28,8 +28,20 @@
             <a href="{{Route('Sorgula')}}">Sorgula</a>
 
             @if(Auth::user()!=null)
-            <a href="{{ route('User.Biletlerim', ['user_id' => Auth::user()->id]) }}">Biletlerim</a>
-            <a href="{{ Auth::user()->type=='admin' ? route('admin.dashboard') : route('dashboard')  }}">{{Auth::user()->name}}</a>
+                @if(Auth::user()->type=='Yolcu')
+                    <a href="{{ route('User.Biletlerim', ['user_id' => Auth::user()->id]) }}">Biletlerim</a>
+
+                    <a href="{{route('dashboard')}}">{{Auth::user()->name}}</a>
+                    @elseif(Auth::user()->type=='admin')
+
+                    <a href="{{route('admin.dashboard')}}">{{Auth::user()->name}}</a>
+
+                    @elseif(Auth::user()->type=='Pilot' || Auth::user()->type=='Hostese')
+
+                    <a href="{{route('dashboard')}}">Dashboard  </a>
+                <a href="{{route('Personel.index',['user_type' => Auth::user()->type, 'user_name'=> Auth::user()->name,'id'=>Auth::user()->id])}}">{{Auth::user()->name}}</a>
+                @endif
+
 
             @else
             <a href="{{route('login')}} ">Giriş</a>

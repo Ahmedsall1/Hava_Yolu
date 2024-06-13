@@ -17,7 +17,8 @@
                             Id:{{ $ucus['sefer_id'] }} </h3>
                 </div>
                 <div class="form-group">
-                    <h4>Standart Koltuk Ucreti: </h4><h4 style=" color:rgb(253, 222, 85, 1);">{{ $ucus['ucret'] }} TL</h4>
+                    <h4>Standart Koltuk Ucreti: </h4>
+                    <h4 style=" color:rgb(253, 222, 85, 1);">{{ $ucus['ucret'] }} TL</h4>
                 </div>
                 <div class="form-group">
                     <h3>Ucak Koltuklari</h3>
@@ -34,7 +35,8 @@
             <table class="table" border="1">
                 <img width="300" height="300" src="{{ asset('images\sol.png') }}" alt="">
                 <tbody>
-                    <tr><td  class="type-k" style="background-color: red  ">dolu</td>
+                    <tr>
+                        <td class="type-k" style="background-color: red  ">dolu</td>
                         <td class="type-k" style="background-color: aliceblue">Ekonomik
                         </td>
                         <td class="type-k" style="background-color: rgb(38, 53, 93);">Standart
@@ -43,50 +45,53 @@
                         </td>
                     </tr>
                     @php
-    $dollu = 0;
-@endphp
+                        $dollu = 0;
+                    @endphp
 
-@foreach ($ucakKoltuklari as $index => $koltuk)
-    @if ($index % $harf == 0)
-        <tr>
-    @endif
+                    @foreach ($ucakKoltuklari as $index => $koltuk)
+                        @if ($index % $harf == 0)
+                            <tr>
+                        @endif
 
-    @php
-        $isDolu = false;
-        foreach ($dolukoltuk as $key => $dolu) {
-            if ($koltuk->id == $dolu) {
-                $isDolu = true;
-                break;
-            }
-        }
-    @endphp
+                        @php
+                            $isDolu = false;
+                            foreach ($dolukoltuk as $key => $dolu) {
+                                if ($koltuk->id == $dolu) {
+                                    $isDolu = true;
+                                    break;
+                                }
+                            }
+                        @endphp
 
-    @if ($isDolu)
-        <td class="koltuk" style="background-color: red" >{{ $koltuk->no }}</td>
-    @else
-        @if ($koltuk->tipi == 'Ekonomik')
-            <td class="koltuk" style="background-color: aliceblue;">
-                <a style="color: rgb(88, 1, 1);" href="{{ route('Ucus.Kesinlestir', ['ucus_id' => $ucus->id, 'koltuk_id' => $koltuk->id]) }}">{{ $koltuk->no }}</a>
-            </td>
-        @elseif ($koltuk->tipi == 'Standart')
-            <td class="koltuk" style="background-color: rgb(38, 53, 93);">
-                <a style="color: white;" href="{{ route('Ucus.Kesinlestir', ['ucus_id' => $ucus->id, 'koltuk_id' => $koltuk->id]) }}">{{ $koltuk->no }}</a>
-            </td>
-        @elseif ($koltuk->tipi == 'Business')
-            <td class="koltuk" style="background-color: rgb(255, 143, 0);">
-                <a style="color: rgb(88, 1, 1);" href="{{ route('Ucus.Kesinlestir', ['ucus_id' => $ucus->id, 'koltuk_id' => $koltuk->id]) }}">{{ $koltuk->no }}</a>
-            </td>
-        @endif
-    @endif
+                        @if ($isDolu)
+                            <td class="koltuk" style="background-color: red">{{ $koltuk->no }}</td>
+                        @else
+                            @if ($koltuk->tipi == 'Ekonomik')
+                                <td class="koltuk" style="background-color: aliceblue;">
+                                    <a style="color: rgb(88, 1, 1);"
+                                        href="{{ route('Ucus.Kesinlestir', ['ucus_id' => $ucus->id, 'koltuk_id' => $koltuk->id]) }}">{{ $koltuk->no }}</a>
+                                </td>
+                            @elseif ($koltuk->tipi == 'Standart')
+                                <td class="koltuk" style="background-color: rgb(38, 53, 93);">
+                                    <a style="color: white;"
+                                        href="{{ route('Ucus.Kesinlestir', ['ucus_id' => $ucus->id, 'koltuk_id' => $koltuk->id]) }}">{{ $koltuk->no }}</a>
+                                </td>
+                            @elseif ($koltuk->tipi == 'Business')
+                                <td class="koltuk" style="background-color: rgb(255, 143, 0);">
+                                    <a style="color: rgb(88, 1, 1);"
+                                        href="{{ route('Ucus.Kesinlestir', ['ucus_id' => $ucus->id, 'koltuk_id' => $koltuk->id]) }}">{{ $koltuk->no }}</a>
+                                </td>
+                            @endif
+                        @endif
 
-    @if (($index + 1) % $harf == 0)
-        </tr>
-    @endif
-@endforeach
+                        @if (($index + 1) % $harf == 0)
+                            </tr>
+                        @endif
+                    @endforeach
 
-@if (count($ucakKoltuklari) % $harf != 0)
-    </tr>
-@endif
+                    @if (count($ucakKoltuklari) % $harf != 0)
+                        </tr>
+                    @endif
                 </tbody>
 
             </table>
@@ -97,8 +102,9 @@
         </div>
 
 
-
+    
     @endif
+
 
 
 @endsection

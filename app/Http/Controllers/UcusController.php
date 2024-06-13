@@ -231,38 +231,45 @@ class UcusController extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    find
     public function find(Request $request)
-    {
-        $request->validate([
-            'sefer-nerden' => 'required',
-            'sefer-nereye' => 'required',
-            'sefer-tarih' => 'required',
-        ]);
+{
+    $request->validate([
+        'sefer-nerden' => 'required',
+        'sefer-nereye' => 'required',
+        'sefer-tarih' => 'required',
+    ]);
 
-        $nerden = strip_tags($request->input('sefer-nerden'));
-        $nereye = strip_tags($request->input('sefer-nereye'));
-        $tarih = strip_tags($request->input('sefer-tarih'));
+    $nerden = strip_tags($request->input('sefer-nerden'));
+    $nereye = strip_tags($request->input('sefer-nereye'));
+    $tarih = strip_tags($request->input('sefer-tarih'));
 
-        $sefer = [
-            'nerden' => $nerden,
-            'nereye' => $nereye,
-            'tarih' => $tarih
-        ];
-        $sefer1 = Sefer::where('nerden', $nerden)
-            ->where('nereye', $nereye)
-            ->where('tarih', $tarih)
-            ->firstOrFail();
+    error_log("Nereden: $nerden, Nereye: $nereye, Tarih: $tarih");
 
-        $ucuses = [];
+    $sefer = [
+        'nerden' => $nerden,
+        'nereye' => $nereye,
+        'tarih' => $tarih
+    ];
+    $sefer1 = Sefer::where('nerden', $nerden)
+        ->where('nereye', $nereye)
+        ->where('tarih', $tarih)
+        ->first();
 
-        if ($sefer1) {
-            $ucuses = Ucus::where('sefer_id', $sefer1->id)->get();
-        }
+    if ($sefer1) {
+        $ucuses = Ucus::where('sefer_id', $sefer1->id)->get();
 
-        $ucak = Ucak::all();
-        $sirket = Sirket::all();
+    $ucak = Ucak::all();
+    $sirket = Sirket::all();
 
-        return view('Yolcu/ucusSec', compact('ucuses', 'ucak', 'sefer', 'sirket'));
+    return view('Yolcu.UcusSec', compact('ucuses', 'ucak', 'sefer', 'sirket'));
     }
+    
+    $ucak=null;
+    $ucuses=null;
+    $sirket=null;
+    return view('Yolcu.UcusSec', compact('ucuses', 'ucak', 'sefer', 'sirket'));
+
+}
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    ucusSec
     public function ucusSec()
     {
