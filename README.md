@@ -1,6 +1,9 @@
-<h2 style="
+<style>
+    
+h1 {
   color: red;
   animation: myanimation 2s infinite;
+}
 
 @keyframes myanimation {
   from {
@@ -9,7 +12,9 @@
   to {
     color: yellow;
   }
-}">Under construction ...</h2>
+}
+</style>
+<h1>Under construction ...</h1>
 <h3>this project like the <a href="https://github.com/Ahmedsall1/HavaYolu-Bilgi-Sistemi-">HavaYolu-Bilgi-Sistemi</a> but with Laravel</h3>
 
 
