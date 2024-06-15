@@ -16,13 +16,7 @@
     margin: 0 auto;
     overflow: hidden
   }
-  .upcomming {
-    font-size: 45px;
-    text-transform: uppercase;
-    border-left: 14px solid rgba(255, 235, 59, 0.78);
-    padding-left: 12px;
-    margin: 18px 8px;
-  }
+
   .container-1 .item {
     width: 48%;
     float: left;

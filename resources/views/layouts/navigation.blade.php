@@ -34,7 +34,7 @@
                     <x-nav-link href="Sirket" :active="request()->routeIs('Sirket.index')">
                         {{ __('Sirketler') }}
                     </x-nav-link>
-                    
+
 
 
 
@@ -85,6 +85,7 @@
                     </x-slot>
                 </x-dropdown>
             </div>
+            
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">

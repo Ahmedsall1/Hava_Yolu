@@ -10,7 +10,7 @@
     @endphp
     <div class="container-1">
 
-        <h1 class="upcomming"> Biletleriniz</h1>
+        <h1 class="upcomming" style="color: #005096"> Biletleriniz</h1>
         @foreach ($biletler as $bilet)
             <div class="item">
                 <div class="item-right">

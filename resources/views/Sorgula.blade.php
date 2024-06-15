@@ -3,12 +3,12 @@
 
 
 <div id="Sorgula">
-    <h1>Bilet sorgula</h1>
+    <h1 class="upcomming" style="color: #005096">Bilet sorgula</h1>
 
     <form action="{{ route('Ucus.Sorgula') }}" method="POST">
         @csrf
         <div class="seferBulContainer">
-            
+
         <div class="form-group">
             <label for="biletno"><i class="fa-solid fa-ticket"></i> Bilet NO </label>
             <input type="text" class="form-control" id="biletno" name="biletno" value="{{ old('biletno') }}" required>

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class StaticController extends Controller
 {
-    public function index(){
+    public static function index(){
         $airports = SeferController::$AirPorts;
         return view('AnaSayfa',compact('airports'));
     }

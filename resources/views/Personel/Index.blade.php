@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1> Merhaba {{ $name }}</h1>
+<h1 class="upcomming" style="color: #005096"> Merhaba {{ $name }}</h1>
 
 
 

@@ -82,6 +82,7 @@ Route::middleware(['auth', 'YolcuMiddleware'])->group(function () {
 
     Route::get('/{user_type}/{user_name}/{id}/Gurevler', [PersonelController::class, 'index'])->name('Personel.index');
     Route::get('/yolcu/dashboard', [UserController::class, 'index'])->name('dashboard');
+    
 Route::middleware(['auth', 'PersonelMiddleware'])->group(function () {
 
 
