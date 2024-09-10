@@ -16,8 +16,7 @@ class PersonelMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->type =='Pilet' || Auth::user()->type =='Hostese' || Auth::user()->type =='Personel'){
-
+        if (Auth::check() && in_array(Auth::user()->type, ['pilot', 'hostese', 'personel'])) {
             return $next($request);
         }
         return redirect()->back();

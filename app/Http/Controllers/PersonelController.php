@@ -13,11 +13,15 @@ use App\Http\Controllers\Auth;
 class PersonelController extends Controller
 {
 
-    public function index($usertype ,$username,$id){
+    public function index()
+    {
+        return view('Personel.dashboard');
+    }
+    public function sorgula($usertype ,$username,$id){
 
         $ucak=Ucak::all();
         $ucuslar=null;
-        if ($usertype == 'Pilot') {
+        if ($usertype == 'pilot') {
             // Retrieve the airplanes associated with the pilot
             $ucak = Ucak::where('pilot_id', $id)->get();
 
@@ -51,10 +55,10 @@ class PersonelController extends Controller
         }
 
 
-        if($usertype=='Hostese'){
+        if($usertype=='hostese'){
             $ucak = Ucak::where('hostese_id', $id)->get();
             $ucuslar = Ucus::paginate(15)->whereIn('ucak_id', $ucak);
-        return view('Personel.index',['name'=>$username,'type'=>$usertype,'ucuslar'=>$ucuslar]);
+        return view('Personel.sorgula',['name'=>$username,'type'=>$usertype,'ucuslar'=>$ucuslar]);
         }
 
     }

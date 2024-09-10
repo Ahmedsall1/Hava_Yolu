@@ -10,12 +10,9 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
+                    {{-- <a href="{{ route('User.Biletlerim', ['user_id' => Auth::user()->id]) }}">Biletlerim</a> --}}
                 </div>
             </div>
         </div>
     </div>
-    {{-- <form action="{{ route('Sefer.search') }}" method="GET">
-        <input type="text" name="query" placeholder="Search Sefer..." required>
-        <button type="submit">Search</button>
-    </form> --}}
 </x-app-layout>
