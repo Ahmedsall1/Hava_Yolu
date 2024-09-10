@@ -14,8 +14,8 @@
             </div>
         </div>
     </div>
-    <form action="{{ route('Sefer.search') }}" method="GET">
+    {{-- <form action="{{ route('Sefer.search') }}" method="GET">
         <input type="text" name="query" placeholder="Search Sefer..." required>
         <button type="submit">Search</button>
-    </form>
+    </form> --}}
 </x-app-layout>

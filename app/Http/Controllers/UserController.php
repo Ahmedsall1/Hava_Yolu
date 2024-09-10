@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public static $tip = array("Personel", "Yolcu", "Yonetici", "Pilot", "Hostese");
+    public static $tip = array("Personel", "Yolcu", "Yonetici", "Pilot", "Shell Command: Install 'code' command in PATHHostese");
 
     public function index()
     {
@@ -133,7 +133,11 @@ class UserController extends Controller
     public function Biletlerim($user_id)
     {
         $yolcu = User::findOrFail($user_id);
+
         $biletler = Bilet::where('yolcu_id', $user_id)->get();
+        if($biletler==null){
+            return view('Yolcu/Biletlerim');
+        }
 
         // Initialize empty arrays to store related data
         $ucusler = [];
@@ -143,13 +147,16 @@ class UserController extends Controller
         // Loop through each Bilet to fetch related Ucus, Sefer, and Koltuk
         foreach ($biletler as $bilet) {
             $ucus = Ucus::find($bilet->ucus_id);
-            $sefer = Sefer::find($ucus->sefer_id);
-            $koltuk = Koltuk::find($bilet->koltuk_id);
+            
+                $sefer = Sefer::find($ucus->sefer_id);
+                $koltuk = Koltuk::find($bilet->koltuk_id);
+                $ucusler[] = $ucus;
+                $seferler[] = $sefer;
+                $koltuklar[] = $koltuk;
+               
+            
 
             // Add the related data to arrays
-            $ucusler[] = $ucus;
-            $seferler[] = $sefer;
-            $koltuklar[] = $koltuk;
         }
 
         return view('Yolcu/Biletlerim', [

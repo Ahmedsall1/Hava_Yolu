@@ -23,7 +23,9 @@
                 <div class="item-left">
                     <p class="event">Nereden</p>
                     @php
-                        $seferDate = Carbon::parse($seferler[$i]->tarih);
+
+                            $seferDate = Carbon::parse($seferler[$i]->tarih);
+                        
                         $now = Carbon::now();
                     @endphp
 
@@ -101,7 +103,8 @@
                     <div class="content">
                         <span class="jfk">JFK</span>
                         <span class="plane">
-                            <?xml version="1.0" ?><svg clip-rule="evenodd" fill-rule="evenodd" height="60"
+                            <?xml version="1.0" ?>
+                            <svg clip-rule="evenodd" fill-rule="evenodd" height="60"
                                 width="60" image-rendering="optimizeQuality" shape-rendering="geometricPrecision"
                                 text-rendering="geometricPrecision" viewBox="0 0 500 500"
                                 xmlns="http://www.w3.org/2000/svg">

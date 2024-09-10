@@ -53,9 +53,9 @@
                             {{ __('Çıkış Yap') }}
                         </x-dropdown-link>
                     </form>
-                @elseif(Auth::user()->type == 'Pilot' || Auth::user()->type == 'Hostese')
-                    <a href="{{ route('dashboard') }}">Dashboard </a>
-                    <a href="{{ route('Personel.index', ['user_type' => Auth::user()->type, 'user_name' => Auth::user()->name, 'id' => Auth::user()->id]) }}">{{ Auth::user()->name }}</a>
+                @elseif(Auth::user()->type == 'pilot' || Auth::user()->type == 'hostese' || Auth::user()->type=="personel")
+                    <a href="{{ route('personel.dashboard') }}">Dashboard </a>
+                    <a href="{{ route('personel.sorgula', ['user_type' => Auth::user()->type, 'user_name' => Auth::user()->name, 'id' => Auth::user()->id]) }}">{{ Auth::user()->name }}</a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
