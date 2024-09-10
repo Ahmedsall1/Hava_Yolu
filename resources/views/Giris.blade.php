@@ -8,7 +8,7 @@
         @csrf
         <div class="seferBulContainer   ">
             <div class="form-group">
-                <h1 style="color: rgb(253, 222, 85, 1);">Giriş yap   </h1>
+                <h1 style="color: rgb(253, 222, 85, 1);">GIRIŞ YAP</h1>
                 <img class="" width="150" height="150" src="{{asset('images\Yolcu.png')}}" alt="">
             </div>
 

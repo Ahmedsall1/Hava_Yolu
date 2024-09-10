@@ -8,10 +8,12 @@
 
         <div>
 
+
+
             <div class="form-group">
 
-                <label for="sefer-nerden">
-                    <i class="fa-solid fa-plane-departure"></i>  Nereden </label>
+                <label for="sefer-nerden" >
+                    <i class="fa-solid fa-plane-departure"></i> Nereden </label>
                 <select class="form-control" id="sefer-nerden" name="sefer-nerden" required style="color: #005096;">
                     @foreach($airports as $airport)
                     <option value="{{ $airport }}">{{ $airport }}</option>
@@ -20,10 +22,8 @@
             </div>
 
             <div class="form-group">
-                <label for="sefer-nereye">
-
+                <label class="sefer-nereye" for="sefer-nereye"  >
                     <i class="fa-solid fa-plane-arrival"></i>Nereye </label>
-
                 <select class="form-control" id="sefer-nereye" name="sefer-nereye" required style="color: #005096;">
                     @foreach($airports as $airport)
                     <option value="{{ $airport }}">{{ $airport }}</option>
@@ -35,7 +35,8 @@
 
 
             <div class="form-group">
-                <label for="sefer-tarih"><i class="fa-regular fa-calendar-days"></i>Tarih </label>
+                <label for="sefer-tarih">
+                    <i class="fa-regular fa-calendar-days"></i>Tarih </label>
                 <input type="date" class="form-control" id="sefer-tarih" name="sefer-tarih" value="{{old('sefer-tarih')}}" style="color: #005096;" required>
             </div>
 

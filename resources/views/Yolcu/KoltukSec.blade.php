@@ -39,7 +39,7 @@
                         <td class="type-k" style="background-color: red  ">dolu</td>
                         <td class="type-k" style="background-color: aliceblue">Ekonomik
                         </td>
-                        <td class="type-k" style="background-color: rgb(38, 53, 93);">Standart
+                        <td class="type-k" style="background-color: rgb(38, 53, 93); color:white;">Standart
                         </td>
                         <td class="type-k" style="background-color: rgb(255, 143, 0);">Business
                         </td>
@@ -102,7 +102,7 @@
         </div>
 
 
-    
+
     @endif
 
 
